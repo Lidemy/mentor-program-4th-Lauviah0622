@@ -1,2 +1,79 @@
 ## 交作業流程
+## 交作業流程
 
+1. **建立 課綱的 repo 副本**
+  
+    > repo 是 repository 的意思，可以翻譯成資料庫，使用 git 的一整個資料夾，或者是 github 上面的一個專案，我們會稱為 repo。
+
+    首先，你要先用 github classroom 建立一個課綱 repo 的 "副本"。
+    
+    可以點擊[這個連結](https://classroom.github.com/a/SbDvk2VA)，登入之後會給你一個 github repository的連結，這個 repo 就是建立在 Lidemy github 下面屬於你自己的課綱。
+
+2. **將 repo 抓到自己的電腦上。**
+
+    點進去之後，你會發現內容和 Huli 的課綱一模模一樣樣，唯一的不同是，但是上面的 repo 名稱變成 `mentor-program-4th-<你的名子>`。
+    
+    >**自己的課綱** 
+
+    >![](https://i.imgur.com/iGTz55r.png)
+
+	>**huli 的課綱**
+
+    >![](https://i.imgur.com/0PO0erj.png)
+
+    > 可以看到自己的課綱在名稱、描述、還有 watch, star, fork 等等都不一樣。
+
+    在自己的課綱點擊 clone，複製 repo 的 URL 位置。然後在 command line 上面輸入將 server 的 repo 複製到自己電腦的指令 ： *`<   >` 表示依照狀況輸入內容* 
+    ```shell
+    git clone <repo 的 URL>
+    ```
+    
+    這樣一來你就將你自己的課綱從 server 抓下來了，可以開始做作業啦。做到這裡，可以用 command line 進到我們作業的資料夾`。
+
+    ```
+    cd <作業的路徑>
+    ```
+    然後試著看看裡面有甚麼東西
+    ```
+    ls 
+    ```
+    
+3. **建立 branch**
+
+    在開新功能之前，建立一個 branch 是好習慣，寫作業也一樣。所以我們先建立一個 branch。
+    
+    ```
+      git branch <branch名稱>
+    ```
+    然後跳到這個 branch 裡面做東西
+
+    ```
+      git checkout <branch名稱>
+    ```
+    > 你也可以用 `git chcekcout -b <branch名稱> ` 同時建立 branch 跟跳過去。
+    
+4. **做作業啦**  
+
+    開好 branch 就可以在裡面做作業了，但做完之後記得自己先檢查一下格式或者是一些基本的測試。
+
+5. **建立新的版本（commit)**
+
+    做好之後就可以建立新的版本了
+
+    ```
+    git commit -m <版本的訊息>
+    ```
+
+    你可以在版本的訊息裡面輸入你在這次的作業改了甚麼。因為作業可能會分好幾天做，所以也可能建立多個 commit 方便自己看之前做了那些更動，這時commit message 就影響很大，可以讓自己快速 check 到底改了哪些東西]。
+
+6.  **將自己的 repo 同步到 github 上面**
+
+    雖然自已電腦中的 repo 已經更新了，但是我必須將內容同步到 github 上面讓助教看到才能改作業。
+
+    ```
+    git push
+    ```
+
+7. **pull request**
+
+    開啟 github 的頁面，這時候
