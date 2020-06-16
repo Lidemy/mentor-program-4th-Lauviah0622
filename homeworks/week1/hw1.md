@@ -87,11 +87,21 @@
     
     ![](https://i.imgur.com/efkPbXP.png) 
 
-    這時，切換到 `work1`，然後點擊旁邊的 `new pull request`。這樣就可以送出這次的作業的 branch。**記得要將 pull request 的頁面網址複製到學習系統中**，如果助教審核通過的話就會 merge branch 到 master，這次的作業基本上就大功告成啦！ 
+    這時，切換到 `work1`，然後點擊旁邊的 `new pull request`。這樣就可以送出這次的作業的 branch。
+    
+    再來，**記得要將 pull request 的頁面網址複製到學習系統中**
+    
+    ![](https://i.imgur.com/fD5NcPM.png)
+
+    如果助教審核通過的話就會 merge branch 到 master，這次的作業基本上就大功告成啦！ 
 
 8. **delete branch & pull repository**
 
-    上傳完之後還有最後一個步驟。現在 github 上的 repo 已經把 work1 merge 進 master 了。那麼這個 work1 基本上就沒甚麼用了，我們就可以在 github 上面把她刪除，可以到 branches 的頁面點擊 branch 旁邊的垃圾桶。或者是到 Pull request 的頁面也可以刪除。
+    上傳完之後還有最後一個步驟，現在 github 上的 repo 已經把 work1 merge 進 master 了，那麼這個 work1 基本上就沒甚麼用了。
+    
+    我們就可以在 github 上面把她刪除，可以到 branches 的頁面點擊 branch 旁邊的垃圾桶。或者是到 Pull request 的頁面也可以刪除。
+
+    ![](https://i.imgur.com/uGoknXw.png)
 
     最後是把 github 上已經 merge 過的 repo 的內容同步到自己的電腦裡。這裡只需要輸入 
 
