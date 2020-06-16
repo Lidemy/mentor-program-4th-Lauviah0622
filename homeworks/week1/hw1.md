@@ -1,5 +1,4 @@
 ## 交作業流程
-## 交作業流程
 
 1. **建立 課綱的 repo 副本**
   
@@ -40,17 +39,17 @@
     
 3. **建立 branch**
 
-    在開新功能之前，建立一個 branch 是好習慣，寫作業也一樣。所以我們先建立一個 branch。
+    在開新功能之前，建立一個 branch 是好習慣，寫作業也一樣。所以我們先建立一個 branch，我們假設叫做 work1。
     
     ```
-      git branch <branch名稱>
+      git branch work1
     ```
     然後跳到這個 branch 裡面做東西
 
     ```
-      git checkout <branch名稱>
+      git checkout work1
     ```
-    > 你也可以用 `git chcekcout -b <branch名稱> ` 同時建立 branch 跟跳過去。
+    > 你也可以用 `git chcekcout -b work1 ` 同時建立 branch 跟跳過去。
     
 4. **做作業啦**  
 
@@ -66,14 +65,30 @@
 
     你可以在版本的訊息裡面輸入你在這次的作業改了甚麼。因為作業可能會分好幾天做，所以也可能建立多個 commit 方便自己看之前做了那些更動，這時commit message 就影響很大，可以讓自己快速 check 到底改了哪些東西]。
 
-6.  **將自己的 repo 同步到 github 上面**
+6.  **將新的 branch 同步到 github 上面**
 
-    雖然自已電腦中的 repo 已經更新了，但是我必須將內容同步到 github 上面讓助教看到才能改作業。
+    雖然自已電腦中的 repo 已經更新了，但是我必須將新建的 branch 同步到 github 上面讓助教看到才能改作業。
 
     ```
+    git push -u origin work1
+    ```
+
+    上面這個指令除了將 branch 上傳到 origin（其實就是自己課綱 repo 的一個代稱），還設定了快捷的方式，讓 homework 這個 branch 以後預設就是 Push 到這個 github 上面的 homework 這個 Branch。
+
+    所以如果你不是第一次 Push branch 的修改，那可以在這個 branch 中直接使用
+    
+    ``` 
     git push
     ```
 
 7. **pull request**
 
-    開啟 github 的頁面，這時候
+    光上傳上去還不夠，切換到自己課綱的 repo 頁面。可以點擊 branch 看看自己有哪些 Branch，應該會有自己剛剛新 push 上去的 branch。
+    
+    ![](https://i.imgur.com/efkPbXP.png) 
+
+    這時，切換到 `work1`，然後點擊旁邊的 `new pull request`。這樣就可以送出這次的作業的 branch ，如果助教
+
+
+
+
