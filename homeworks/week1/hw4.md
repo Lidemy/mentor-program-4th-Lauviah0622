@@ -4,7 +4,7 @@
 
 ![](https://i.imgur.com/gPTBGDt.png)
 
-當你更新一次版本，你就要
+當你更新一次版本，你就要q
 
 
 
