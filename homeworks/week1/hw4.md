@@ -80,6 +80,8 @@ git 跟神奇寶貝最大的不同就是，**每一個分出去的存檔都可�
 
 你可能在存檔 A 抓到超夢你可以把存檔 A 併回主存檔，那麼你的主存檔就會有 A 的超夢。』
 
+![](https://i.imgur.com/SIh6wEj.png)
+
 在 git 裡面，你可以用 `git branch -b <branch 名稱>` 來建立新的 branch，也就是我們剛剛講的新的存檔。
 
 建立好之後，你可以用 `git checkout <branch 名稱>` 來切換存檔，進去那個存檔修改東西，並且在存檔 A 的 branch 中做出新的 commit 後，
@@ -95,10 +97,12 @@ git 跟神奇寶貝最大的不同就是，**每一個分出去的存檔都可�
 
 如果我在把兩個存檔合併回主存檔的話同一支伊布會變甚麼？」
 
+![](https://i.imgur.com/XDsGBz5.png)
+
 『可能會變成薛丁格的伊布吧？不對。
 
 如果在不同的的存檔進化到同一隻伊布 （不同的 branch 修改到同一個檔案）的情形。
-那當然魚與熊掌不可兼得，不可能一隻變兩隻，所以你可能需要把其中一隻刪掉或怎麼樣的，總之你必須解決兩個版本在一部進化上面的問題。
+那當然魚與熊掌不可兼得，不可能一隻變兩隻，所以你可能需要把其中一隻送去屠宰場或怎麼樣的，總之你必須解決兩個版本在同一支伊布進化的問題。
 
 這樣在不同的 branch 上修改到同一個檔案的情形我們稱之為 "conflict"。
 
@@ -156,19 +160,62 @@ github 跟 google drive 這種雲端硬碟比較不同。雲端硬碟是有另�
 
 這個指令比剛剛的都還長阿...但是其實並不複雜。
 
-簡單說，就是**增加(add)**一個和自己**遠端同步(remote)**的 repo，位置在 *<gitgub 的 url>(可以輸入自己的 url)*，代號 *origin(名稱其實也可以自己訂，但預設是 origin))*。輸入指令之後就牽好自己的 repo 與 github 上的 repo 的紅線了。
+簡單說，就是**新增(add)**一個和自己**遠端同步(remote)**的 repo ，位置是 *<gitgub 的 url>(可以輸入自己的 url)*，代號 *origin(名稱其實也可以自己訂，但通常大家都用 origin)*。
 
-接下來就是單純的指令（其實也沒有很單純...）
+概念相當於把 github 上的 repo 加進自己的常用地址，就像我們會講說 "h0w哥家"，但其實我們稱呼的 "h0w哥家" 其實確切地址是 "台北市信義區松勇路 110 號" 。
 
-`git pull` 可以把 github 上的內容同步下來。
+origin 就相當一個代稱，也就是上面的 "h0w 哥家"， github url 就像確切的地址 => "台北市信義區松山路 111 號"。 而 origin 這個名稱就會在之後需要指定 github 上的 repo 時用到。
 
-`git push` 可以把你電腦中的內容同步到 github 上面git 去。
+加入地址了，接下來就是同步存檔了。在 github 裡面，同步是以 branch 為單位的，在第一次，我們要做的是把電腦中已經有的 repo ，推(push)到 github 上面。
+
+> `git push -u origin master`
+
+在 git 裡面，從電腦同步到線上的指令稱作 `push`，而從線上同步到電腦的指令稱作 `pull`，但是這個指令除了將自己的 master 同步到 github 上以外，也把**自己電腦的 master** 和 **origin （也就是 github 上的 repo） 的 master** 牽紅線。
+
+經過上面的市定，如果之後 master 這個 branch 要 push 的話，就不需要再重新指定說 "我要同步到 origin 的 master"（對應的指令是 `git push origin master`） ，只要你現在在 master 直接輸入 `git push`，就可以同步到 github 對應的 master 囉。
+
+上面講完了同步到線上，接下來最後一個步驟就是從線上同步到電腦了。
+
+剛剛提到 從線上同步到電腦的指令稱作 `pull` （拉下來的感覺）。當你在在 master 這個 branch 中輸入 `git pull`，就可以把在線上其他人同步到 github 的版本 "merge" 下來。
+
+要注意的是，`git pull` 相當於把位於 github 上的 branch merge 到自己的 branch ，只要是 merge 都有可能會遇到 conflict 的問題。所以如果遇到 conflict 就和 merge 其他 branch 相同的方式就可以解決。
+
+終於講完拉，最後來個小小總複習吧
+
+#### 開始使用 git
+1. `git init`：將資料夾初始化，可以開始使用 git 囉。
+2. `git add .`：將所有的檔案加入版本控制的行列(untracked => staged)
+3. `git commit -m <版本訊息>`：建立第一次的版本
+
+#### 儲存新的版本
+1. `git add .`：把所有改過的檔案加入準備區(unstaged => staged)
+2. `git commit -m <版本訊息>`：新增版本
+
+#### 建立新的 branch （不同的存檔）
+1. `git branch <branch 名稱>` ：建立新的 branch
+2. `git checkout <branch 名稱>`：切換到 branch
 
 
+#### merge branch （合併存檔）
+1.  `git merge <branch 名稱>` ：把其他 branch 合併進來
 
+如果有 comflict => 修改檔案內容後
 
+2. `git commit -m <版本訊息>`：新增版本
 
-』
+#### 和遠端同步
+第一次同步
+
+1. `git remote add origin <url>`
+2. `git push -u origin master`
+
+- `git push`：設定好 `-u` 之後就可以直接同步到線上指定的 branch
+- `git pull`：直接把線上的 branch merge 進來
+
+#### 其他指令
+- `git status`：看看自己 repo 內檔案版本控制的狀態
+- `git log` ：看看過去的版本紀錄
+``
 
 
 
