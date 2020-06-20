@@ -57,7 +57,13 @@
 
 5. **建立新的版本（commit)**
 
-    做好之後就可以建立新的版本了
+    做好之後就可以建立新的版本了，`git add` 會將檔案加入版本控制， 後面的 `.` 則是代表所有的檔案
+
+    ```
+    git add .
+    ```
+
+    加入版本控制之後就可以新增新的版本囉～
 
     ```
     git commit -m <版本的訊息>
@@ -103,7 +109,13 @@
 
     ![](https://i.imgur.com/uGoknXw.png)
 
-    最後是把 github 上已經 merge 過的 repo 的內容同步到自己的電腦裡。這裡只需要輸入 
+    最後是把 github 上已經 merge 過的 repo 的內容同步到自己的電腦裡。因為我們已經把 work1 merge 進 master 了，所以理所當然的我們應該要切換到 master。
+
+    ```
+    git checkout master
+    ```
+    
+    再同步 branch。
 
     ```
     git pull
