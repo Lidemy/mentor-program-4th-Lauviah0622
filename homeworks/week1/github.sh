@@ -13,3 +13,5 @@ for info in "name" "bio" "location" "blog"
 do
     echo "${rep}" | grep ${info} | awk 'BEGIN { FS = "\"" } ; {print $4}'
 done
+
+exit 0
