@@ -27,9 +27,7 @@
     "url": "https://github.com/Lidemy/mentor-program-4th/issues"
   },
   "homepage": "https://github.com/Lidemy/mentor-program-4th#readme",
-  "dependencies": {
-    
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^5.15.1",
     "eslint-config-airbnb": "^17.1.0",
