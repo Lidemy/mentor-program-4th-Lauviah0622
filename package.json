@@ -4,6 +4,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./homeworks/**/*.js",
+    "lint3": "eslint ./homeworks/week3/*.js",
+    "fix": "eslint --fix ./homeworks/week3/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "husky": {
