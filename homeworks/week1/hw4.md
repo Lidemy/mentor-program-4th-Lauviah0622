@@ -82,7 +82,7 @@ git 跟神奇寶貝最大的不同就是，**每一個分出去的存檔都可�
 
 ![](https://i.imgur.com/SIh6wEj.png)
 
-在 git 裡面，你可以用 `git branch -b <branch 名稱>` 來建立新的 branch，也就是我們剛剛講的新的存檔。
+在 git 裡面，你可以用 `git branch <branch 名稱>` 來建立新的 branch，也就是我們剛剛講的新的存檔。
 
 建立好之後，你可以用 `git checkout <branch 名稱>` 來切換存檔，進去那個存檔修改東西，並且在存檔 A 的 branch 中做出新的 commit 後，
 

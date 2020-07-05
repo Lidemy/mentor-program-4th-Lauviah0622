@@ -9,6 +9,5 @@ do
 
     touch ${c}.js
 
-    # 主程式
 done
 exit 0
