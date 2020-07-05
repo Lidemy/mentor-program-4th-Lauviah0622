@@ -1,3 +1,4 @@
+/* eslint linebreak-style: 0 */
 function star2(n) {
   return new Array(n - 1).fill('').map((e, i) => '*'.repeat(i + 1)).join('\n');
 }
@@ -5,7 +6,7 @@ function star2(n) {
 function star(n) { // eslint-disable-line no-unused-vars
   let result = '';
   let str = '';
-  for (let i = 1; i <= n; i + 1) {
+  for (let i = 1; i <= n; i += 1) {
     str += '*';
     result = `${result}${str}\n`;
   }

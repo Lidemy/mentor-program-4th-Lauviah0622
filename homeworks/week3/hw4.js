@@ -1,6 +1,7 @@
+/* eslint linebreak-style: 0 */
 function reverse(str) {
   let output = '';
-  for (let i = 0; i < str.length; i + 1) {
+  for (let i = 0; i < str.length; i += 1) {
     const e = str[str.length - i - 1];
     output += e;
     // console.log(e)
@@ -18,5 +19,5 @@ function solve(lines) {
   console.log(isPalindrome(lines[0]) ? 'True' : 'False');
 }
 
-solve('abbbba');
-solve('imnotPalindrome');
+solve(['abbbba']);
+solve(['imnotPalindrome']);
