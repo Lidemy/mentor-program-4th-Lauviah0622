@@ -32,7 +32,7 @@ function read(id) {
     console.log(res.statusCode);
     res.on('data', (buffer) => {
       const rawData = parsedBody(buffer);
-      if (rawData.hasOwnProperty('name')) { //eslint-disable-line
+      if (rawData.hasOwnProperty('name')) { // eslint-disable-line
         console.log(`#${rawData.id}: ${rawData.name}`);
       } else {
         console.log(`can't found the book #${id}`);
