@@ -10,5 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "request": "^2.88.2"
+  },
+  "eslintConfig": {
+    "rules": {
+      "linebreak-style": 0
+    }
   }
 }
