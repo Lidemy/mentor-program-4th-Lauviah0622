@@ -1,5 +1,3 @@
-# 作業
-
 ## API 文件
 
 Base URL: https://lidemy-book-store.herokuapp.com

@@ -1,0 +1,18 @@
+<scirpt>
+  const request = require('request');
+
+  options = {
+  url: 'https://api.twitch.tv/kraken/games/top',
+  method: 'GET',
+  headers: {
+  'Client-ID': 'qi079afnud4wnc8d9c5ii2x863sq7l',
+  'Accept': 'application/vnd.twitchtv.v5+json'
+
+  }
+  };
+
+  request(options, (err, req, body) => {
+  const rawData = JSON.parse(body)
+  console.log(rawData.top[1].game)
+  })
+</scirpt>
