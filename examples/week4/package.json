@@ -1,7 +1,7 @@
 {
   "name": "week4",
   "version": "1.0.0",
-  "description": "我有看到很多人在程式碼裡面一拿到資料就直接對 response 做 `JSON.parse`，但若是 response 不是一個合法的 JSON 字串，會回傳錯誤：",
+  "description": "",
   "main": "twitch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
