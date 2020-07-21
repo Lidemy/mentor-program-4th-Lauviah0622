@@ -7,36 +7,29 @@ function transToNumArr(str) {
   return str.split('').reverse();
 }
 
+
+// 把兩個大數的每一位數乘以每一位數，先儲存在 array 裡面
 function getProductArray(arr1, arr2) {
   const product = [];
-
   arr1.forEach((numA, i) => {
     arr2.forEach((numB, j) => {
-      const mul = +numA * +numB;
-      // console.log('no', i + j, '=>', mul)
-      if (!product[i + j]) {
-        product[i + j] = [mul];
-      } else {
-        product[i + j].push(mul);
-      }
-      // console.log(mul)
+      const mul = +numA * +numB; // 先把數字乘出來
+      product[i + j] = product[i + j] ? [...product[i + j], mul] : [mul];
     });
   });
   return product;
 }
 
+// 處理進位問題，例如：[[1], [21], [123]] 把超過十位數的進位 => [[1, 2, 1], [1, 3], [3]]
 function carryDigit(arr) {
   const copyArr = [...arr];
-  // console.log(123123)
   for (let i = 0; i < copyArr.length; i += 1) {
     const digitArr = copyArr[i];
-    // console.log(digitArr)
     for (let j = 0; j < digitArr.length; j += 1) {
       const digEle = digitArr[j];
       const carryNum = Math.floor(digEle / 10);
       const unitDig = digEle % 10;
       if (carryNum) {
-        // console.log(true)
         digitArr[j] = unitDig;
         if (copyArr[i + 1]) {
           copyArr[i + 1].push(carryNum);
@@ -44,14 +37,12 @@ function carryDigit(arr) {
           copyArr[i + 1] = [carryNum];
         }
       }
-      // console.log(i, ':', carryNum, unitDig)
     }
   }
-  // console.log(copyArr)
   return copyArr;
 }
 
-
+// 各個位數相加 [[1, 2, 1], [1, 3], [3]] => [4, 4, 3]
 function sumDigit(arr) {
   const result = arr.map(digArr => digArr.reduce((acc, e) => acc + e, 0));
   for (let i = 0; i < result.length; i += 1) {
@@ -65,6 +56,7 @@ function sumDigit(arr) {
   }
   return result;
 }
+
 
 function multiply(a, b) {
   const numArrA = transToNumArr(a);
