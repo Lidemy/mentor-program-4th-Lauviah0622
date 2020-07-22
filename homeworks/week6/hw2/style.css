@@ -1,0 +1,42 @@
+/* =====Base===== */
+h1, h2, h3, h4, h5, h6, p  {
+  margin: 0;
+}
+
+body {
+  font-family: '微軟正黑體', serif;
+}
+
+/* =====state===== */
+
+.required .form-item__ques::after {
+  content: '*';
+  color: red;
+  margin: 2px;
+
+}
+
+
+/* =====layout===== */
+.wrapper {
+  padding: 0 42px;
+  margin: 35px 0;
+}
+
+/* =====module===== */
+
+.header__title {
+  padding: 19px 0;
+}
+
+.header__des {
+  padding: 16px 0;
+}
+
+.header__des p + p {
+  margin-top: 11px;
+}
+
+.header__remind {
+  margin-top: 8px;
+}
