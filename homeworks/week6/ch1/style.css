@@ -1,0 +1,165 @@
+:root {
+  --primary-color: #ff6500;
+  --font-color: #828282;
+}
+
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+}
+
+.wrapper {
+  margin: 8px auto;
+  width: 85%;
+
+
+}
+
+.header {
+  background-color: var(--primary-color);
+  padding: 1px;
+  vertical-align: middle;
+  /* display: flex;
+  justify-content: space-between; */
+
+}
+
+
+.header>a {
+  text-decoration: none;
+  color: #000;
+  display: inline;
+}
+
+.header__logo {
+  display: inline;
+  /* height: 20px; */
+  line-height: 20pt;
+  width: 20px;
+  text-align: center;
+  font-family: Verdana, Geneva, sans-serif;
+  /* font-weight: 700; */
+  padding: 1px 5px;
+  font-size: 12pt;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.header__logotype {
+  display: inline;
+  font-weight: bold;
+  line-height: 20pt;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+
+
+.header__menu {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: inline-flex;
+  padding-left: 5px;
+}
+
+.header__menu li~li::before {
+  content: ' | ';
+  white-space: pre;
+}
+
+.header__login {
+  float: right;
+  line-height: 20pt;
+  vertical-align: sub;
+  padding-right: 4px;
+}
+
+main {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.list {
+  background-color: #f6f6ef;
+  margin: 0;
+  list-style-type: none;
+  counter-reset: li;
+  padding: 11px 0;
+  padding-left: 40px;
+}
+
+.list-news__title {
+  font-weight: normal;
+  margin: 0;
+}
+
+.list-news__title::before {
+  position: absolute;
+  content: '▲';
+  color: var(--font-color);
+  left: -12px;
+  top: 2px;
+  font-size: 8pt;
+
+}
+
+.list-news__source {
+  font-size: 8pt;
+  font-weight: normal;
+  color: var(--font-color);
+}
+
+.list-news {
+  position: relative;
+  counter-increment: li;
+  margin-bottom: 8px;
+}
+
+.list-news::before {
+  position: absolute;
+  left: -22pt;
+  content: counter(li) '.';
+  display: inline-block;
+  color: var(--font-color);
+}
+
+.list-news__info {
+  font-size: 7pt;
+  margin: 0;
+  line-height: 12px;
+}
+
+.list__more {
+  text-decoration: none;
+  color: #000;
+  margin: 5px 0 0 0;
+}
+
+.footer {
+  text-align: center;
+  background-color: #f6f6ef;
+  padding: 18px 0;
+}
+
+.footer__menu {
+  text-align: ceter;
+  display: flex;
+  list-style-type: none;
+  margin: 0 auto;
+  padding-bottom: 13px;
+  font-size: 8pt;
+  justify-content: center;
+}
+
+.footer__menu li + li::before{
+  content: " | ";
+  white-space: pre;
+}
+
+.footer__search p{
+  display: inline;
+  color: var(--font-color);
+  width: 135px;
+}
+
