@@ -8,9 +8,9 @@
 #### `<code>`
 > 「程式應該是寫給其他人讀的，讓機器來執行它只是一個附帶功能。」 - 《The Structure and Interpretation of Computer Programs》Harold Abelson and Gerald Jay Sussman
 
-> HTML：「我這不就寫給你讀了嗎？」
+> HTML：「`那這個樣子有比較好讀嗎？`」
 
-當你用這個 tag 取代你原本的 `<p>` 。哇，就能得到成很像程式碼的內容了呢！即便那不是真的程式碼，不過對老闆而言這不重要對吧？
+當你用這個 tag 取代你原本的 `<p>` 。哇，就能得到成很像程式碼的內容了呢！即便那不是真的程式碼，不過對客戶來說可能不重要，重要的是它看起來很厲害。
 
 把你打的東西變成很 nerd 的樣式是他唯一的功能。
 #### `<object>`
