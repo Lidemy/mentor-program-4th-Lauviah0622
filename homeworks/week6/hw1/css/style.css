@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Questrial', '微軟正黑體', serif;
+  font-family: 'Questrial', 'Noto Sans TC', serif;
 }
 
 .page-wrapper {
@@ -353,7 +353,6 @@ nav .nav__wrapper {
 .map__content {
   height: 455px;
   width: 100%;
-  background-color: aqua;
 }
 
 /* footer start */
