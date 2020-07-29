@@ -59,9 +59,9 @@
         </div>
 
         <div class="form-item form-item--required">
-          <h3 class="form-item__ques">怎麼知道這個活動的？</h3>
+          <h3 class="form-item__ques">怎麼知道這個活動的</h3>
           <div class="form-item__ans">
-            <input type="text" placeholder="您的回答" name="howknow">
+            <input type="text" placeholder="您的回答" name="howtoKnow">
           </div>
         </div>
 
@@ -86,38 +86,81 @@
     © 2020 © Copyright. All rights Reserved.
   </footer>
   <script>
-    const form = document.querySelector('.form')
+    const form = document.querySelector('.form');
+    const inputs = document.querySelectorAll('input[name]');
+
+    // 因為radio 的 input 有兩個，要一直 filter 有點麻煩，所以把 filter 寫進去~
+    Array.prototype.filtRepeatEle = function () {
+      return this.filter((e, i, arr) => (e && arr.indexOf(e) === i));
+    };
+
+    // 如果用 HTML , CSS 還有 DOM 的 API 配合起來蠻快就可以做完的：在 HTML 中 input 的 attribute上加上 require, 以及 pattern 加上正則就可以。想說可以不用 DOM 自帶的 API 自己實現看看 validity 驗證這塊，所以就：
     // 1. 先把自帶的 check 關掉
     // 2. 不加 require
     form.noValidate = true;
     form.addEventListener('submit', checkAns);
 
-    function checkAns(e) {
-      // e.preventDefault()
 
-      const validity = {
-        name: /.+/,
-        email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        // 來自於：https://emailregex.com/
-        phone: /09[\d]{8}/,
-        type: /.+/,
-        howknow: /.+/,
-        other: /.*/,
+    function checkAns(e) {
+      e.preventDefault()
+
+      const ques = Array.from(inputs)
+        .map(e => e.getAttribute('name'))
+        .filtRepeatEle()
+
+      console.log(form.elements)
+
+      // 設定每個問題的 pattern
+      function getValidity(caseObj) {
+        const validity = {};
+        const requireInputsNames = Array.from(document.querySelectorAll('.form-item--required input'))
+          .map(e => e.getAttribute('name'))
+          .filtRepeatEle()
+
+        const caseProps = Object.keys(caseObj)
+        ques.forEach(q => {
+          validity[q] = caseObj[q] || (requireInputsNames.includes(q) ? /.+/ : /.*/);
+        })
+        return validity
       }
 
-      const isValid = Object.values(form.elements)
-        .map(e => e.getAttribute('name'))
-        .filter((e, i, arr) => {
-          return (e && arr.indexOf(e) === i);
-        })
+      const validity = getValidity({
+        email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      })
+      // pattern 來自於：https://emailregex.com/
+
+      // 用剛剛的 pattern 來 check 所有問題的 value
+      const isValid = ques
         .map(q => form.elements[q].value.match(validity[q]))
-        .reduce((acc, e) => Array.isArray(e) && acc, true)
+        .reduce((acc, e) => Array.isArray(e) && acc, true);
 
-      console.log(isValid);
-
+      const completeNofication = document.querySelector('.form__alert')
+      // 
       if (!isValid) {
-        document.querySelector('.form__alert').classList.add('form__alert--show');
-        e.preventDefault();
+        completeNofication.classList.add('form__alert--show');
+
+      } else {
+        completeNofication.classList.remove('form__alert--show');
+
+        const alertMsg = Array.from(inputs)
+          .map(input => {
+            const ques = input.closest('.form-item').firstElementChild.innerText;
+            let ans = form.elements[input.getAttribute('name')].value;
+            // radio 的要找 label 的選項內容...
+            if (input.getAttribute('type') === 'radio') {
+              ansContent = document.querySelector(`input[value='${ans}']`).nextElementSibling.innerText
+              ans = ansContent;
+            }
+            // 沒寫的就不用顯示了
+            return ans ? `${ques}： \n${ans} \n` : '';
+          })
+          .filtRepeatEle()
+          .join('');
+
+        alert(alertMsg);
+        alert('感謝您的填寫，那我就 reset 囉～');
+        // reset form
+        form.reset();
       }
     }
   </script>

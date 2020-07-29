@@ -115,16 +115,14 @@ body {
 .form-item__ans input:not([type="radio"]) {
   border-radius: 2px;
   border: 1px solid #d0d0d0;
-  color: #afafaf;
+  /* color: #afafaf; */
   width: 287px;
 }
 
 .form-item__ans input:not([type="radio"]):focus {
-  /* color: blue  */
   border: 1px solid #a0a0a0;
   color: #656565;
   outline: none;
-  /* outline-offset: 0px */
 }
 
 .form-item__ans input:not([type="radio"]):valid {
@@ -137,6 +135,7 @@ body {
   background-color: rgba(221, 142, 142, 0.333);
   border-radius: 2px;
 }
+
 
 
 .form-item__ans input[type="radio"] {
