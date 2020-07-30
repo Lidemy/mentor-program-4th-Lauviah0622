@@ -1,0 +1,72 @@
+.faq {
+  max-width: 1024px;
+}
+
+.faq-item {
+  padding: 29px 68px;
+  list-style-type: none;
+  counter-increment: faq-item
+}
+
+li.faq-item + li {
+  border-top: 1px solid #a6e2c0;
+}
+
+.faq-item h3 {
+  position: relative;
+
+}
+
+.faq-item h3::before {
+  content: 'Q' counter(faq-item) ':';
+  font-size: 24px;
+  display: block;
+  position: absolute;
+  left: -4.5ch;
+  bottom: -1px;
+  width: 4ch;
+  text-align: right;
+  color: #70b282;
+}
+
+.faq-item h3::after {
+  color: #70b282;
+  position : relative;
+  display: inline-block;
+  content: '▲';
+  left: 1.5ch;
+  font-size: 12px;
+  vertical-align: middle;
+  transform: rotate(3deg);
+  transform-origin: center 40%;
+  transition: transform .5s;
+
+}
+
+.faq-item.faq-item--show h3::after {
+  transform: rotate(180deg)
+}
+
+
+.faq-item h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.faq-item p {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.8em;
+  max-height: 0;
+  overflow: hidden;
+  transition: margin .5s, max-height .3s;
+}
+
+
+.faq-item.faq-item--show p {
+  margin: 24px 0 16px 0;
+  max-height: 5em;
+  transition: margin .5s, max-height .3s;
+
+}

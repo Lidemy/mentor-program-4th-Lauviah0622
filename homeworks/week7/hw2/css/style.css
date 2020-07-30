@@ -146,7 +146,8 @@ nav .nav__wrapper {
 
 .block {
   /* border: 1px solid #000; */
-  margin: 60px 0;
+  max-width: 1280px;
+  margin: 60px auto;
   padding: 0 var(--desktop-margin);
 }
 
@@ -250,6 +251,17 @@ nav .nav__wrapper {
 }
 
 /* menu start */
+.menu {
+  /* display: block; */
+  max-width: none;
+  padding: 0
+}
+
+@media (min-width: 1440px) {
+  .menu {
+    max-width: 80vw
+  }
+}
 
 .menu__gallery {
   display: flex;
