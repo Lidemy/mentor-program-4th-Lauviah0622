@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./normalize.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>新拖延運動報名表單</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="deco"></div>
+    <header class="header">
+      <h1 class="header__title">新拖延運動報名表單</h1>
+      <div class="header__des">
+        <p>活動日期：2020/12/10 ~ 2020/12/11</p>
+        <p>活動地點：台北市大安區新生南路二段1號</p>
+      </div>
+      <h3 class="header__remind">*必填</h3>
+    </header>
+    <main>
+      <form action="" class="form">
+        <div class="form-item required">
+          <h3 class="form-item__ques">暱稱</h3>
+          <div class="form-item__ans">
+            <input type="text" placeholder="您的回答">
+          </div>
+        </div>
+
+        <div class="form-item form-item--required">
+          <h3 class="form-item__ques">電子郵件</h3>
+          <div class="form-item__ans">
+            <input type="email" placeholder="您的回答">
+          </div>
+        </div>
+
+        <div class="form-item required">
+          <h3 class="form-item__ques">手機號碼</h3>
+          <div class="form-item__ans">
+            <input type="text" placeholder="您的回答">
+          </div>
+        </div>
+
+        <div class="form-item required">
+          <h3 class="form-item__ques">報名類型</h3>
+          <div class="form-item__ans">
+            <span>
+              <input type="radio" placeholder="您的回答" name="type" value="bed">
+              <label for="bed">躺在床上用想像力實作</label>
+            </span>
+            <span>
+              <input type="radio" placeholder="您的回答" name="type" value="floor">
+              <label for="floor"> 趴在地上滑手機找現成的</label>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-item required">
+          <h3 class="form-item__ques">怎麼知道這個活動的？</h3>
+          <div class="form-item__ans">
+            <input type="text" placeholder="您的回答">
+          </div>
+        </div>
+
+        <div class="form-item required">
+          <h3 class="form-item__ques">其他</h3>
+          <h6 class="form-item__des">對活動的一些建議</h6>
+          <div class="form-item__ans">
+            <input type="text" placeholder="您的回答">
+          </div>
+        </div>
+
+
+        <button class="form__submit" type="submit">提交</button>
+        <p class="form__remind">請勿透過表單送出您的密碼。</p>
+
+      </form>
+    </main>
+  </div>
+      <footer class="footer">
+        © 2020 © Copyright. All rights Reserved.
+      </footer>
+
+</body>
+
+</html>
