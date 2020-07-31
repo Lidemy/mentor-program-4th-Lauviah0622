@@ -139,12 +139,18 @@ todoList.rename = (num, name) => {
 }());
 
 
-document.querySelector('.input__button').addEventListener('click', function addTaskButtonHandeler() {
+function addTaskButtonHandeler() {
   const input = document.querySelector('.input__blank');
   const { value } = input;
   input.value = '';
   todoList.createTask(value);
+}
+
+document.querySelector('.input__blank').addEventListener('keydown', (e) => {
+  if (e.code !== 'Enter') return;
+  addTaskButtonHandeler();
 });
 
+document.querySelector('.input__button').addEventListener('click', addTaskButtonHandeler);
+
 todoList.initialUITask();
-// const listItemEle = document.querySelector('.list-item');
