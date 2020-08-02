@@ -169,7 +169,7 @@ body {
   visibility: hidden;
 }
 
-.form__alert--show {
+.form__alert--show, .form-item--invalid .form__alert {
   visibility: visible;
 
 }

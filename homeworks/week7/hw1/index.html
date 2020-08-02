@@ -35,13 +35,15 @@
           <div class="form-item__ans">
             <input type="email" placeholder="您的回答" name="email">
           </div>
+          <p class="form__alert">請輸入正確的電子信箱格式，例：example@test.com</p>
         </div>
-
+        
         <div class="form-item form-item--required">
           <h3 class="form-item__ques">手機號碼</h3>
           <div class="form-item__ans">
             <input type="text" placeholder="您的回答" name="phone" pattern="09[\d]{8}">
           </div>
+          <p class="form__alert">請輸入正確的手機格式，例：0987-654-321</p>
         </div>
 
         <div class="form-item form-item--required">
@@ -86,57 +88,68 @@
     © 2020 © Copyright. All rights Reserved.
   </footer>
   <script>
-    const form = document.querySelector('.form');
-    const inputs = document.querySelectorAll('input[name]');
-
     // 因為radio 的 input 有兩個，要一直 filter 有點麻煩，所以把 filter 寫進去~
     Array.prototype.filtRepeatEle = function () {
       return this.filter((e, i, arr) => (e && arr.indexOf(e) === i));
     };
 
+    const form = document.querySelector('.form');
+    const inputs = document.querySelectorAll('input[name]');
+    const ques = Array.from(inputs)
+    .map(e => e.getAttribute('name'))
+    .filtRepeatEle();
+
     // 如果用 HTML , CSS 還有 DOM 的 API 配合起來蠻快就可以做完的：在 HTML 中 input 的 attribute上加上 require, 以及 pattern 加上正則就可以。想說可以不用 DOM 自帶的 API 自己實現看看 validity 驗證這塊，所以就：
     // 1. 先把自帶的 check 關掉
     // 2. 不加 require
     form.noValidate = true;
-    form.addEventListener('submit', checkAns);
+
+    const patterns = getPatterns({
+      email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,  // pattern 來自於：https://emailregex.com/
+      phone: /09[\d]{8}/
+    })
 
 
-    function checkAns(e) {
-      e.preventDefault()
-
-      const ques = Array.from(inputs)
+    function getPatterns(caseObj) {
+      const validity = {};
+      const requireInputsNames = Array.from(document.querySelectorAll('.form-item--required input'))
         .map(e => e.getAttribute('name'))
         .filtRepeatEle()
 
+      const caseProps = Object.keys(caseObj)
+      ques.forEach(q => {
+        validity[q] = caseObj[q] || (requireInputsNames.includes(q) ? /.+/ : /.*/);
+      })
+      return validity
+    }
+
+    function isValid(value, pattern) {
+      return !!value.match(pattern)
+    }
+
+    form.addEventListener('input', function checkAnsValid(e) {
+      let valid = isValid(e.target.value, patterns[e.target.name]);
+      let formItem = e.target.closest('.form-item');
+      if (!valid) {
+        formItem.classList.add('form-item--invalid');
+      } else {
+        formItem.classList.remove('form-item--invalid');
+      }
+    })
+
+    form.addEventListener('submit', checkAllAnsValid);
+
+    function checkAllAnsValid(e) {
+      e.preventDefault()
+
       console.log(form.elements)
 
-      // 設定每個問題的 pattern
-      function getValidity(caseObj) {
-        const validity = {};
-        const requireInputsNames = Array.from(document.querySelectorAll('.form-item--required input'))
-          .map(e => e.getAttribute('name'))
-          .filtRepeatEle()
-
-        const caseProps = Object.keys(caseObj)
-        ques.forEach(q => {
-          validity[q] = caseObj[q] || (requireInputsNames.includes(q) ? /.+/ : /.*/);
-        })
-        return validity
-      }
-
-      const validity = getValidity({
-        email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      })
-      // pattern 來自於：https://emailregex.com/
-
-      // 用剛剛的 pattern 來 check 所有問題的 value
-      const isValid = ques
-        .map(q => form.elements[q].value.match(validity[q]))
+      const allAnsValid = ques
+        .map(q => isValid(form.elements[q].value, patterns[q]))
         .reduce((acc, e) => Array.isArray(e) && acc, true);
 
-      const completeNofication = document.querySelector('.form__alert')
-      // 
-      if (!isValid) {
+      const completeNofication = document.querySelector('h5.form__alert')
+      if (!allAnsValid) {
         completeNofication.classList.add('form__alert--show');
 
       } else {
