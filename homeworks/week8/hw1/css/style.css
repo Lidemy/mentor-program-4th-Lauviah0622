@@ -6,6 +6,7 @@
 
 body {
   font-family: 'Questrial', 'Noto Sans TC', serif;
+  height: 100vh
 }
 
 .page-wrapper {
@@ -122,7 +123,7 @@ nav .nav__wrapper {
   max-height: 580px;
   background: linear-gradient(rgba(0, 0, 0, 0.45),
       rgba(0, 0, 0, 0.45)),
-    url(../images/2.jpg);
+    url(../images/home/2.jpg);
   background-position: center right;
   /* background-color: #cfcfe6; */
   background-size: cover;
