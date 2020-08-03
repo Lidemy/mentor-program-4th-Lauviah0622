@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <div class="title">Twitch Top Games</div>
+            <ul class="nav">
+                <li class="nav__item"><a href="#">{{Game}}</a></li>
+                <li class="nav__item"><a href="#">{{Game}}</a></li>
+                <li class="nav__item"><a href="#">{{Game}}</a></li>
+                <li class="nav__item"><a href="#">{{Game}}</a></li>
+                <li class="nav__item"><a href="#">{{Game}}</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="streams">
+        <div class="loading"></div>
+        <div class="wrapper">
+            <h1 class="streams__title">{{GameName}}</h1>
+            <h3 class="streams__subtitle">Top 20 popular live streams sorted by current viewers</h3>
+
+            <div class="streams__gallery">
+                <figure class="stream">
+                    <div class="stream__preview">
+                        <img src="https://via.placeholder.com/500" alt="">
+                    </div>
+                    <div class="stream__info">
+                        <div class="stream__avatar" style="background-image:url({{preview}})">
+                        </div>
+                        <div class="stream__text">
+                            <div class="stream__ch-name">
+                                {{channeNamechanneNamechanneNamechanneNamechanneName}}
+                            </div>
+                            <div class="stream__id">
+                                {{channerID}}
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        </div>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
