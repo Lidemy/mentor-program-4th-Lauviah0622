@@ -12,7 +12,7 @@ ol, li, div, span {
   background-color: #fff;
   box-shadow: 1px 1px 10px #00000066;
   height: 70vh;
-  width: 163vh;
+  width: 80%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -86,7 +86,7 @@ ol, li, div, span {
   height: 100%;
   width: 100%;
   background-color: #333;
-  transition: .5s;
+  transition: 1s;
   font-size: 100px;
   color: white;
   display: none;
@@ -107,29 +107,26 @@ ol, li, div, span {
   height: 100%;
   width: 100%;
   position: relative;
-  /* transition: .5s; */
-  /* transform: translate(100%) */
 }
 
 .active {
   display: block;
-  /* visibility: visible; */
 }
 
 .right.in {
-  animation: .05s ease-in-out forwards slide-rtl-in
+  animation: .7s ease-in-out forwards slide-rtl-in
 }
 
 .right.out {
-  animation: .05s ease-in-out forwards slide-rtl-out
+  animation: .7s ease-in-out forwards slide-rtl-out
 }
 
 .left.in {
-  animation: .05s ease-in-out forwards slide-ltr-in
+  animation: .7s ease-in-out forwards slide-ltr-in
 }
 
 .left.out {
-  animation: .05s ease-in-out forwards slide-ltr-out
+  animation: .7s ease-in-out forwards slide-ltr-out
 }
 
 @keyframes slide-rtl-in{

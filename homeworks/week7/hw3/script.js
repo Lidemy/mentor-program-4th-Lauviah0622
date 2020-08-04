@@ -163,15 +163,20 @@ todoList.syncLocalStorage = () => {
       return new Error('localstorage parse ERROR');
     }
   }());
-  data.forEach(e => todoList.createTask(e.name, e.id, e.checked));
+  if (!data) {
+    (function test() {
+      for (let i = 0; i < 5; i += 1) {
+        todoList.createTask(`test_${i}`);
+      }
+    }());
+  } else {
+
+    console.log(data)
+    data.forEach(e => todoList.createTask(e.name, e.id, e.checked));
+  }
   return todoList;
 };
 
-// (function test() {
-//   for (let i = 0; i < 5; i += 1) {
-//     todoList.createTask(i);
-//   }
-// }());
 
 function addTaskButtonHandeler() {
   const input = document.querySelector('.input__blank');
