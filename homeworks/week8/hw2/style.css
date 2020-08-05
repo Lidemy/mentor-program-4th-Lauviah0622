@@ -1,17 +1,22 @@
-*{
-    outline: 1px solid 
-}
-
 body {
-    margin: 0
+    margin: 0;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
     margin: 0;
     padding: 0;
 }
 
-.header > div{
+
+.header>div {
     margin: 0 auto;
     width: 85vw;
     max-width: 1440px;
@@ -25,23 +30,33 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 .title {
     font-size: 2rem;
+    flex-shrink: 0;
+    margin-right: 30px;
 }
+
 
 .nav {
     list-style-type: none;
     display: flex;
 }
 
-.nav__item + li {
+.nav__item+li {
     margin-left: 4ch;
 }
 
-.nav__item a{
+.nav__item a {
     color: inherit;
+    text-decoration: none;
 }
 
 .nav-item {
     color: #323232;
+}
+
+main {
+    background-image: url(https://images.unsplash.com/photo-1527334919515-b8dee906a34b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .wrapper {
@@ -49,14 +64,17 @@ h1, h2, h3, h4, h5, h6, p, ul {
     max-width: 1290px;
     margin: 0 auto;
     text-align: center;
+    color: white;
 }
 
 .streams__title {
     padding: 0.4em 0;
+    text-shadow: 1px 1px 5px #000;
 }
 
 .streams__subtitle {
     padding: 0.3em 0;
+    text-shadow: 1px 1px 5px #000;
 }
 
 .streams__gallery {
@@ -66,11 +84,18 @@ h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 .stream {
-    width: 33%;
-    margin: 0;
+    /* width: 1px; */
+    flex-shrink: 1;
+    flex-basis: 30%;
+    background-color: #ffffff33;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 10px;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
 }
 
-.stream:hover .stream__preview img{
+.stream:hover .stream__preview img {
     transform: scale(1.05);
 }
 
@@ -89,6 +114,7 @@ h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 .stream__info {
+    padding: 5px;
     display: flex;
     align-content: stretch;
 }
@@ -98,6 +124,9 @@ h1, h2, h3, h4, h5, h6, p, ul {
     width: 4.5vw;
     max-width: 80px;
     max-height: 80px;
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
 .stream__text {
@@ -107,12 +136,15 @@ h1, h2, h3, h4, h5, h6, p, ul {
     justify-content: space-around;
     flex-grow: 1;
     font-size: calc(8pt + 0.5vw);
+    text-shadow: 1px 1px 2px #00000099;
 }
 
-.stream__ch-name, .stream__id{
+.stream__ch-name,
+.stream__id {
     text-overflow: ellipsis;
     text-align: left;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .stream__ch-name {
@@ -123,3 +155,26 @@ h1, h2, h3, h4, h5, h6, p, ul {
     font-size: 0.8em;
 }
 
+.page__btn {
+    margin: 20px auto;
+    border: 1px solid #000;
+    padding: 10px 20px;
+
+    border-radius: 5px;
+    display: inline-block;
+    width: fit-content;
+    border: 1px solid #fff;
+}
+
+.page__btn.disabled {
+    visibility: hidden;
+}
+
+.page__btn:hover {
+    cursor: pointer;
+}
+
+#page {
+    display: inline-block;
+    margin: 0 20px;
+}

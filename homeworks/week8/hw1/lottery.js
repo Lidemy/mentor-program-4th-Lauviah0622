@@ -59,6 +59,9 @@ function getPrize(prize) {
 
     wrapper.classList.remove('lottery');
     wrapper.classList.add('prize');
+    modal.classList.remove('animating');
+    void modal.offsetWidth
+    modal.classList.add('animating');
 
 
 

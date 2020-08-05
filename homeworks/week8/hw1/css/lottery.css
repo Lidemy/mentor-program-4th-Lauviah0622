@@ -86,6 +86,9 @@
     display: none;
 }
 
+.prize__modal.animating {
+    animation: backInDown .5s 1;
+}
 
 .loading {
     height: 100%;
@@ -146,3 +149,20 @@
         height: 32px;
     }
 }
+
+@keyframes backInDown {
+    0% {
+      transform: translateY(-1200px) scale(0.7);
+      opacity: 0.7;
+    }
+  
+    80% {
+      transform: translateY(0px) scale(0.7);
+      opacity: 0.7;
+    }
+  
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
