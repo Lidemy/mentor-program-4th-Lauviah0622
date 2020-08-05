@@ -1,0 +1,363 @@
+:root {
+  --primary-color: #88d19d;
+  --padding-m: 0 20px;
+}
+
+html {
+  font-family: "Overpass", "Noto Sans TC", sans-serif;
+  background-color: #eeeeee;
+  color: #999;
+}
+
+body {
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.ui {
+  /* position: absolute; */
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin: 50px auto 50px auto;
+  /* margin: 40px 0; */
+  background-color: #fefefe;
+  box-shadow: 5px 5px 20px #cccccc;
+  border-radius: 10px;
+  /* height: 512px; */
+  width: 512px;
+  /* left: 50%; */
+  top: 20%;
+  /* transform: translateX(-50%); */
+}
+
+.text-color--primary {
+  color: var(--primary-color);
+}
+
+
+
+.title {
+  text-align: center;
+  color: #fefefe;
+  background-color: var(--primary-color);
+  font-size: 1.6rem;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  margin: 0;
+  user-select: none;
+}
+
+.top {
+  background-color: var(--primary-color);
+  border-radius: 10px 10px 3px 3px;
+  overflow: hidden;
+
+
+}
+
+
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 10px 10px;
+  /* overflow: hidden; */
+  /* flex-basis: 306px; */
+}
+
+.list-item {
+  display: flex;
+  align-items: stretch;
+  /* border-bottom: 1px solid #ccc; */
+  height: 60px;
+  /* height: 0; */
+  transition: .3s;
+  opacity: 1;
+}
+
+.list-item.list-item--closed {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+
+}
+
+.list-item:not(.list-item--closed):nth-last-of-type(1) {
+  border-radius: 0 0 10px 10px;
+}
+
+.list-item:hover {
+  box-shadow: 0px 1px 10px #00000066
+}
+
+.list-item--done {
+  color: #ddd;
+}
+
+.list-item>div {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-m)
+}
+
+
+.list-item:not(:nth-of-type(1)):not(.list-item--closed) {
+  border-top: 1px solid #ccc
+}
+
+.list-item__check {
+  border-right: 1px solid #ccc;
+  user-select: none;
+  color: transparent;
+}
+
+.list-item__check p {
+  background: linear-gradient(to top, #eee 52%, #999 48%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 100% 200%;
+  background-position: 0% -100%;
+  transform: translateY(0);
+  transition: .3s ease-in-out;
+}
+
+/* .list-item__check p:hover, */
+.list-item--done .list-item__check p {
+  transition: .3s ease-in-out;
+  background-position: 0% 0%;
+}
+
+.list-item__check p:hover {
+  transform: translateY(-1px);
+}
+
+.list-item__check p:active {
+  transform: translateY(2px);
+}
+
+.list-item--done .list-item__check p:active {
+  transform: translateY(0);
+}
+
+
+.list-item__title {
+  flex-grow: 1;
+
+}
+
+.list-item--done .list-item__title {
+  text-decoration: line-through;
+}
+
+.list-item__title p {
+  position: relative;
+  outline: none;
+  width: 100%;
+  padding: 2px 0;
+  top: 3px;
+  transition: .3s;
+}
+
+.list-item__title p:focus {
+  border-bottom: 1px solid #ccc
+}
+
+.list-item__delete {
+  position: relative;
+  user-select: none;
+  font-size: 1.4rem;
+
+}
+
+
+
+
+.list-item__delete .sign {
+  right: -40px;
+  top: 20%;
+  opacity: 0;
+  transition: .2s ease-in-out;
+}
+
+.list-item__delete p:hover+.sign {
+  opacity: 1;
+}
+
+
+
+.list-item__delete p:hover,
+.list-item__check p:hover {
+  cursor: pointer;
+}
+
+.list-item__delete p::after,
+.list-item__check p::after {
+  content: '完成';
+  position: absolute;
+  display: block;
+  font-size: 13.5px;
+  background-color: #88d19dde;
+  border-radius: 4px;
+  padding: 3px 6px;
+  color: white;
+}
+
+.list-item__check p::after {
+  left: -57px;
+  top: -3px;
+  padding: 4px 9px;
+}
+
+.list-item__delete p::after {
+  right: -40px;
+  top: 4px;
+  font-size: 10px;
+  content: '刪除';
+
+}
+
+.list-item__delete p::before,
+.list-item__check p::before {
+  content: '';
+  /* background-color: #88d19dde; */
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 6px 4px 0;
+  border-color: transparent #88d19dde transparent transparent;
+  position: absolute;
+}
+
+.list-item__check p::before {
+  border-width: 4px 0px 4px 6px;
+  left: -12px;
+  top: 7px;
+  border-color: transparent transparent transparent #88d19dde;
+
+}
+
+.list-item__delete p::before {
+  left: 20.5px;
+  top: 11px;
+  font-size: 10px;
+}
+
+
+.list-item__delete p::before,
+.list-item__delete p::after,
+.list-item__check p::before,
+.list-item__check p::after {
+  opacity: 0;
+  transition: .2s ease-in-out;
+
+}
+
+.list-item__delete p:hover::before,
+.list-item__delete p:hover::after,
+.list-item__check p:hover::before,
+.list-item__check p:hover::after {
+  opacity: 1
+}
+
+
+.input {
+  display: flex;
+  color: white;
+  height: 60px;
+  align-items: center;
+}
+
+
+.input__blank {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  font-size: 0.9rem;
+  padding: 5px 9px 0 5px;
+  outline: none;
+  color: inherit;
+  border-radius: 2px;
+  font-family: "Overpass", "Noto Sans TC", sans-serif;
+  margin: var(--padding-m);
+  border-bottom: 1px solid white;
+  opacity: 0.8;
+  transition: .2s;
+}
+
+.input__blank::placeholder {
+  color: inherit;
+}
+
+.input__blank:focus {
+  background-color: #00000011;
+  text-shadow: 2px 0px 1px #00000022;
+  opacity: 1;
+
+}
+
+.input__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  font-size: 1.2rem;
+  height: 100%;
+  user-select: none;
+  cursor: pointer;
+  transform: scale(1, 1);
+  transform-origin: center center;
+  transition: background-color .2s;
+  outline: none;
+  border-radius: 2px 2px 2px 2px;
+}
+
+
+
+
+.input__button div,
+.list-item__delete p {
+  transform: scale(1.2, 1.2) translateX(-1px);
+  transition: transform .1s ease-in-out, text-shadow .1s ease-in-out;
+}
+
+.input__button:hover div,
+.list-item__delete p:hover {
+  transform: scale(1.4, 1.4) translateX(-1px);
+  text-shadow: 1px 0px 1px #00000022;
+}
+
+.input__button:active div {
+  transform: scale(1.4, 1.4) translateX(1px);
+}
+
+.list-item__delete p:active {
+  transform: scale(1.2, 1.2) translateX(-1px);
+}
+
+
+
+footer {
+  box-shadow: 5px 5px 20px #cccccc;
+  width: 100%;
+  padding: 0.5em;
+  padding-bottom: 1em;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 10pt;
+  color: #999;
+  background-color: #efefef;
+}
+
+footer a {
+  color: inherit;
+}

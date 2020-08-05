@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&family=Overpass&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="ui">
+      <div class="top">
+        <h1 class="title text-color--primary">TodoList</h1>
+        <div class="input">
+          <input type="text" class="input__blank" placeholder="有啥要忙的？">
+          <div class="input__button">
+            <div>»</div>
+          </div>
+        </div>
+      </div>
+      <ul class="list">
+        <li class="list-item ">
+          <div class="list-item__check">
+            <p data-btn="check">✔</p>
+          </div>
+          <div class="list-item__title">
+            <p contenteditable>{{name}}</p>
+          </div>
+          <div class="list-item__delete">
+            <p data-btn='delete'>⨯</p>
+          </div>
+        </li>
+        <li class="list-item list-item--done">
+          <div class="list-item__check">
+            <p data-type="btn">✔</p>
+          </div>
+          <div class="list-item__title">
+            <p>123</p>
+          </div>
+          <div class="list-item__delete">
+            <p data-btn>⨯</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <footer>
+      UI insired by <a href="https://www.instagram.com/p/BANdpLwGZpo/" target="_blank">marko.vel</a>
+    </footer>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
