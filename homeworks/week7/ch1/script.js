@@ -22,11 +22,11 @@ function move(inEle, outEle, isLTR) {
 }
 
 function slideTo(num, direction) {
-  console.log('觸發 slideTo 了')
-  console.log('這次的 num 是', num)
-  console.log('這次的 current 是', current)
+  console.log('觸發 slideTo 了');
+  console.log('這次的 num 是', num);
+  console.log('這次的 current 是', current);
   if (num === current) {
-    console.log("num 等於 current，slideTo 終止！")
+    console.log("num 等於 current，slideTo 終止！");
     return
   };
   let isLTR = num < current;
