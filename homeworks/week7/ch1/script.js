@@ -3,6 +3,7 @@ let current = 0;
 let canSlide = true;
 
 function move(inEle, outEle, isLTR) {
+  console.log('成功觸發 move 了 ！')
   const direction = isLTR ? 'left' : 'right';
   inEle.classList.add(direction, 'in', 'active');
   outEle.classList.add(direction, 'out');
@@ -21,7 +22,13 @@ function move(inEle, outEle, isLTR) {
 }
 
 function slideTo(num, direction) {
-  if (num === current) return;
+  console.log('觸發 slideTo 了')
+  console.log('這次的 num 是', num)
+  console.log('這次的 current 是', current)
+  if (num === current) {
+    console.log("num 等於 current，slideTo 終止！")
+    return
+  };
   let isLTR = num < current;
   if (direction === 'left') {
     isLTR = true;
@@ -35,7 +42,8 @@ function slideTo(num, direction) {
   const slideOutEle = document.querySelector('.carousel-item.active');
   move(slideInEle, slideOutEle, isLTR);
 
-  current = num;
+  console.log(`current:${current} 改成 下一個數字 ${num} 囉`)
+  current = +num;
 }
 
 const count = (num) => {
@@ -50,35 +58,23 @@ const count = (num) => {
   const indicators = document.querySelectorAll('li[data-slide-to]');
 
   /* 原本有想要包裝成下面的形式，但是中間遇到問題：在 move 裡面的 canSlide 不會轉成 true，導致說裡面的東西不會執行
-
-  const addSlideHandler = (ele, num, direction) => {
-    ele.addEventListener('click', function(){
-      if (!canSlide) return
-      canSlide = false;
-      slideTo(num, direction);
-    })
-  };
-  addSlideHandler(prev, count(current + -1), 'left')
-
   */
 
-  const setCanSlideFalse = func => function () {
-    if (!canSlide) return;
-    canSlide = false;
-    func();
+  const addSlideHandler = (ele, count, direction) => {
+    ele.addEventListener('click', function () {
+      if (!canSlide) return
+      canSlide = false;
+      slideTo(count(), direction);
+    })
   };
 
-  prev.addEventListener('click', setCanSlideFalse(() => {
-    slideTo(count(current + -1), 'left');
-  }));
-  next.addEventListener('click', setCanSlideFalse(() => {
-    slideTo(count(current + 1), 'right');
-  }));
+
+  // 阿阿阿阿阿阿阿這裡的 current 被固定住拉！！！！！！！！！
+  addSlideHandler(prev, () => count(current + -1), 'left');
+  addSlideHandler(next, () => count(current + 1), 'right');
 
   for (let i = 0; i < indicators.length; i += 1) {
     const li = indicators[i];
-    li.addEventListener('click', setCanSlideFalse(() => {
-      slideTo(count(li.getAttribute('data-slide-to')));
-    }));
+    addSlideHandler(li, () => li.getAttribute('data-slide-to'));
   }
 }());
