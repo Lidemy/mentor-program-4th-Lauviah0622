@@ -7,14 +7,14 @@ const page = (function () {
     const prevPage = document.querySelector('#prevBtn');
     return {
         nextPage() {
-            currentPage++
-            return currentPage
+            currentPage++;
+            return currentPage;
         },
         prevPage() {
             if (currentPage > 1) {
-                currentPage--
+                currentPage--;
             }
-            return currentPage
+            return currentPage;
         },
         get current() {
             return currentPage
@@ -33,7 +33,7 @@ const page = (function () {
 })();
 const streamTemplate = document.querySelector('figure.stream').outerHTML;
 
-function getGames(callback) {
+function getGames() {
     sendXHR('games/top?limit=5', (data) => {
         const gameNames = data.top.map(item => item.game.name);
         topGames = gameNames;
@@ -116,17 +116,3 @@ function sendXHR(url, callback) {
         getStreams(currentGame, page.prevPage())
     })
 })()
-
-
-function addObserver() {
-    const watcher = new IntersectionObserver(e => {
-        console.log(e)
-    });
-
-    const figrues = document.querySelectorAll('figure.stream');
-    figrues.forEach(e => {
-        watcher.observe(e);
-    })
-
-
-}
