@@ -5,85 +5,86 @@ const todoList = [];
 
 todoList.element = document.querySelector('.list');
 
-todoList.createTask = (name) => {
-  const Task = class {
-    constructor(taskName, localStoredId, localStoredCheck) {
-      const ids = todoList.map(e => e.id);
-      let id = localStoredId || todoList.length;
-      // 避免 ID 重複
-      while (ids.includes(id)) {
-        id += 1;
+class Task {
+  constructor(taskName, localStoredId, localStoredCheck) {
+    const ids = todoList.map(e => e.id);
+    let id = localStoredId || todoList.length;
+    // 避免 ID 重複
+    while (ids.includes(id)) {
+      id += 1;
+    }
+    this.id = id;
+    this.name = taskName;
+    this.checked = localStoredCheck || false;
+    this.element = this.createUIElement();
+  }
+
+  createUIElement() {
+    const createEle = (taskName, id, done = false) => {
+      const newEle = document.createElement('li');
+
+      // set Attribute
+      newEle.id = id;
+      const classes = ['list-item', 'list-item--closed'];
+      if (done) {
+        classes.push('list-item--done');
       }
-      this.id = id;
-      this.name = taskName;
-      this.checked = localStoredCheck || false;
-      this.element = this.createUIElement();
-    }
+      newEle.classList.add(...classes);
+      newEle.innerHTML = listItemTEMPLATE.replace(/{{name}}/g, taskName || '沒事就找事');
 
-    createUIElement() {
-      const createEle = (taskName, id, done = false) => {
-        const newEle = document.createElement('li');
-
-        // set Attribute
-        newEle.id = id;
-        const classes = ['list-item', 'list-item--closed'];
-        if (done) {
-          classes.push('list-item--done');
-        }
-        newEle.classList.add(...classes);
-        newEle.innerHTML = listItemTEMPLATE.replace(/{{name}}/g, taskName || '沒事就找事');
-
-        // add Listener
-        newEle.addEventListener('click', function itemBtnHandler(e) {
-          const btnType = e.target.getAttribute('data-btn');
-          if (!btnType) return; // not check or delete
-          const taskEleId = todoList.findParentItemIndex(e.target);
-          todoList[btnType](taskEleId);
-        });
-        newEle.addEventListener('input', function itemTitleHandler(e) {
-          const taskEleId = todoList.findParentItemIndex(e.target);
-          todoList.rename(taskEleId, e.target.innerText);
-        });
-        return newEle;
-      };
-
-      const element = createEle(this.name, this.id, this.done);
-      return element;
-    }
-
-    delete() {
-      const i = todoList.findIndex(e => e.id === this.id);
-      // 刪除 todoList 中的
-      todoList.splice(i, 1);
-
-      // 跑完特效在刪除(變超麻煩
-      this.element.addEventListener('transitionend', (e) => {
-        if (e.eventPhase !== 2 || !this.element) return;
-        // 刪除 ui 上的 task
-        todoList.element.removeChild(this.element);
-        // 刪除 task 中的 element，不然因為 transitinoend 會被觸發多次所以會跳 error
-        this.element = null;
+      // add Listener
+      newEle.addEventListener('click', function itemBtnHandler(e) {
+        const btnType = e.target.getAttribute('data-btn');
+        if (!btnType) return; // not check or delete
+        const taskEleId = todoList.findParentItemIndex(e.target);
+        todoList[btnType](taskEleId);
       });
-      this.element.classList.add('list-item--closed');
-      return todoList;
-    }
+      newEle.addEventListener('input', function itemTitleHandler(e) {
+        const taskEleId = todoList.findParentItemIndex(e.target);
+        todoList.rename(taskEleId, e.target.innerText);
+      });
+      return newEle;
+    };
 
-    check() {
-      this.checked = !this.checked;
-      if (this.checked) {
-        this.element.classList.add('list-item--done');
-      } else {
-        this.element.classList.remove('list-item--done');
-      }
-      // todoList.renderTask()
-      return this;
-    }
+    const element = createEle(this.name, this.id, this.done);
+    return element;
+  }
 
-    rename(newname) {
-      this.name = newname;
-      return this;
+  delete() {
+    const i = todoList.findIndex(e => e.id === this.id);
+    // 刪除 todoList 中的
+    todoList.splice(i, 1);
+
+    // 跑完特效在刪除(變超麻煩
+    this.element.addEventListener('transitionend', (e) => {
+      if (e.eventPhase !== 2 || !this.element) return;
+      // 刪除 ui 上的 task
+      todoList.element.removeChild(this.element);
+      // 刪除 task 中的 element，不然因為 transitinoend 會被觸發多次所以會跳 error
+      this.element = null;
+    });
+    this.element.classList.add('list-item--closed');
+    return todoList;
+  }
+
+  check() {
+    this.checked = !this.checked;
+    if (this.checked) {
+      this.element.classList.add('list-item--done');
+    } else {
+      this.element.classList.remove('list-item--done');
     }
-  };
+    // todoList.renderTask()
+    return this;
+  }
+
+  rename(newname) {
+    this.name = newname;
+    return this;
+  }
+};
+
+todoList.createTask = (name) => {
 
   const task = new Task(name);
   todoList.push(task);
