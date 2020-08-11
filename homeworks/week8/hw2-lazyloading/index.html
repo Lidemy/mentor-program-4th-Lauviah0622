@@ -25,18 +25,23 @@
             <h3 class="streams__subtitle">Top 20 popular live streams sorted by current viewers</h3>
 
             <div class="streams__gallery">
-                <figure class="stream">
+                <figure class="stream placeholder">
                     <div class="stream__preview">
-                        <a href="{{channel-link}}">
-                            <img src="{{channel-preview}}" alt="">
+                        <a target="_blank" href="{{channel-link}}">
+                            <img 
+                            alt="" data-src="{{channel-preview}}">
                         </a>
                     </div>
                     <div class="stream__info">
-                        <div class="stream__avatar" style="background-image:url({{channel-avatar}})">
+                        <div class="stream__avatar">
+                            <img 
+                            data-src="{{channel-avatar}}" alt="">
                         </div>
                         <div class="stream__text">
                             <div class="stream__ch-name">
-                                {{channel-title}}
+                                <a target="_blank" href="{{channel-link}}">
+                                    {{channel-title}}
+                                </a>
                             </div>
                             <div class="stream__id">
                                 {{channel-name}}
@@ -44,11 +49,6 @@
                         </div>
                     </div>
                 </figure>
-            </div>
-            <div class="btns">
-                <div id="prevBtn" class="page__btn">Prev Page</div>
-                <h2 id="page">1</h2>
-                <div id="nextBtn" class="page__btn">Next Page</div>
             </div>
         </div>
     </main>

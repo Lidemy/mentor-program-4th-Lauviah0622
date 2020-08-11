@@ -1,0 +1,429 @@
+:root {
+  --font-color: #010101;
+  --desktop-margin: 96px;
+  --mobile-margin: 48px;
+}
+
+body {
+  font-family: 'Questrial', 'Noto Sans TC', serif;
+  height: 100vh
+}
+
+.page-wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+/* nav start */
+
+nav {
+  background-color: #fff;
+  box-shadow: -2px -2px #676b6a;
+}
+
+nav .nav__wrapper {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 84px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  max-width: 1440px;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.icon a {
+  font-size: 36px;
+  color: #489896;
+  box-sizing: border-box;
+
+}
+
+.nav-list ul {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  display: inline-block;
+  border-radius: 8px;
+  transition: all 0.2s ease-in;
+  box-sizing: border-box;
+  /* display: block; */
+}
+
+.nav-list li {
+  padding: 13px 25px;
+  /* margin: 4px; */
+  list-style-type: none;
+}
+
+
+.nav-list__event,
+.nav-list a:hover {
+  background-color: #ff7286;
+  color: white;
+
+}
+
+
+
+@media (max-width: 768px) {
+  nav .nav__wrapper {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    /* height: 7rem; */
+    /* padding: 12px 0; */
+  }
+
+  .nav__icon {
+    margin: 2vw 0
+  }
+
+  .nav-list {
+    width: 100%;
+  }
+
+  .nav-list ul {
+    display: flex;
+  }
+
+  .nav-list a {
+    width: 25%;
+    margin: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+
+  .nav-list li {
+    padding: 2.5vw 14px;
+  }
+
+
+}
+
+/* nav end */
+
+/* header start */
+
+#header {
+  height: 60vw;
+  max-height: 580px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)),
+    url(../images/home/2.jpg);
+  background-position: center right;
+  /* background-color: #cfcfe6; */
+  background-size: cover;
+}
+
+.header__title {
+  color: white;
+  margin: 0;
+  top: 50%;
+  text-align: center;
+  position: relative;
+  transform: translateY(-50%);
+}
+
+
+/* header end */
+
+
+/* content */
+/* base css */
+
+.block {
+  /* border: 1px solid #000; */
+  margin: 60px 0;
+  padding: 0 var(--desktop-margin);
+}
+
+.block__title {
+  text-align: center;
+  padding: 20px 0;
+  margin: 0;
+}
+
+/* before 這段是用試出來的...不太懂 */
+/* before 是以甚麼作為他的參考？為什麼外層元素沒有用 relative 他也可以定位？ */
+/* h1 裡面的字是所謂的 字元素 */
+.block__title span {
+  position: relative;
+}
+
+.block__title span::before {
+  content: '';
+  position: absolute;
+  background-color: #a3dea2;
+  height: 1em;
+  left: -25px;
+  width: 0.5em;
+}
+
+.block__content {
+  text-align: center;
+  font-size: 16px;
+  line-height: 2.3em;
+  margin: 0;
+  letter-spacing: 0.41px;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .block {
+    padding: 0 var(--mobile-margin);
+  }
+
+  .block__title {
+    padding-bottom: 50px
+  }
+}
+
+/* intro start */
+
+.intro-buttons {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 80px 0 40px 0;
+}
+
+.intro-buttons a {
+  display: inline-block;
+  color: #3e613d;
+  background-color: #a8e8e1;
+  border: 5px solid #a8e8e100;
+  border-radius: 10px;
+  margin: 0 12px;
+  box-sizing: border-box;
+  transition: .3s;
+}
+
+.intro-buttons a h2 {
+  margin: 65px;
+  /* margin: 0; */
+}
+
+.intro-buttons a:nth-child(2) {
+  background-color: #f9f9b5;
+  border: 5px solid #f9f9b500;
+}
+
+.intro-buttons a:hover {
+  border: 5px solid #38cfbf78;
+}
+
+.intro-buttons a:nth-child(2):hover {
+  border: 5px solid #efef8c;
+}
+
+.intro p span{
+  display: inline-block;
+  margin-top: 15px;
+}
+@media (max-width: 768px) {
+  .intro p span{
+    margin-top: 25px;
+  }
+
+  .intro-buttons {
+    flex-direction: column;
+    padding: 25px 0 0 0;
+
+  }
+
+  .intro-buttons a {
+    margin: 12px 12px;
+  }
+}
+
+/* menu start */
+
+.menu__gallery {
+  display: flex;
+  /* width: 100%; */
+}
+
+.menu__gallery figure {
+  flex: 1 1 0;
+  margin: 0;
+}
+
+.menu__gallery figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+
+  .menu__gallery {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .menu__gallery figure {
+    width: 50%;
+    flex: 1 1 auto;
+    margin: 0;
+  }
+}
+
+/* reviews start */
+
+.reviews__board {
+  display: flex;
+  padding-top: 98px;
+}
+
+.reviews-block {
+  flex: 1 1 0;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: -1.4px -1.4px 4px 0 #d8eaef;
+  border: solid 1px #c7e5ec;
+  background-color: #ffffff;
+  margin: 0 8px;
+  /* width: 30%; */
+  position: relative;
+  padding: 93px 25px 39px 25px;
+}
+
+.reviews-block__avatar {
+  position: absolute;
+  left: 50%;
+  top: -52.5px;
+  white-space: nowrap;
+  transform: translate(-50%);
+}
+
+.reviews-block__avatar img {
+  width: 105px;
+  height: auto;
+  border: 1px solid #c1c1c1;
+  border-radius: 50%;
+}
+
+.reviews-block__avatar p {
+  margin: 0;
+}
+
+@media (max-width: 932px) {
+  .reviews__board {
+    flex-direction: column;
+    padding-top: 6vw;
+
+  }
+
+  .reviews-block {
+    margin: 0 0 10vw 0;
+    padding: 80px 25px 20px 25px;
+
+  }
+
+  .reviews-block:nth-last-child(1) {
+    margin: 0;
+  }
+
+  .reviews-block__avatar {
+    top: -6vw;
+
+  }
+
+  .reviews-block__avatar img {
+    width: 12vw;
+  }
+}
+
+
+/* map start */
+
+.map__content {
+  height: 455px;
+  width: 100%;
+}
+
+/* footer start */
+.footer-info {
+  padding: 35px var(--desktop-margin);
+  background-color: #e8efee;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.footer-info__ci {
+  text-align: right;
+}
+
+.footer-info__icon {
+  margin: 0;
+}
+
+
+.footer-info__content ul {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-info__content li {
+  list-style-type: none;
+  padding: 8px 0;
+  /* font-size: 14px; */
+}
+
+.footer-info__link a:nth-child(1) ~ a::before {
+  content: '/';
+  margin-right: 0.2em;
+}
+
+.footer-info__link span:hover {
+  color: #9a9a9a;
+}
+
+.footer-credit h4 {
+  /* height: 48px; */
+  text-align: center;
+  background-color: #35564B;
+  margin: 0;
+  line-height: 48px;
+  color: #fff;
+  font-weight: normal;
+}
+
+@media (max-width: 932px) {
+  .footer-info {
+    flex-direction: column;
+    padding: 35px var(--mobile-margin);
+  }
+
+  .footer-info__content li span:nth-child(2)::before {
+    content: '\A';
+    white-space: pre;
+  }
+  
+  .footer-info__content li {
+    line-height: 1.5em;  
+  }
+
+  .footer-info__ci {
+    margin-top: 40px;
+  }
+
+  .footer-credit h4 {
+    font-size: calc(3px + 1.5vw);
+  }
+}

@@ -1,0 +1,168 @@
+.wrapper {
+    position: relative;
+    height: 767px;
+    width: 100%;
+    background-image: url('../images/lottery/games-bn@3x.jpg');
+    background-size: cover;
+    background-position: center right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lottery__modal {
+    width: 500px;
+    background-color: #fff;
+    padding: 0px 20px;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.lottery__title {
+    font-size: 24px;
+    color: #5ec1b6;
+    text-align: center;
+    padding: 40px 0;
+    margin: 0;
+}
+
+.lottery__item {
+    font-size: 16px;
+    font-weight: normal;
+    display: flex;
+    border-bottom: dotted 1px #cdcdcd;
+    padding: 22px 0 19px 0;
+
+}
+
+.lottery__item:nth-child(1) {
+    padding-top: 0;
+}
+
+.lottery__item>td:nth-child(1) {
+    font-size: 1.1em;
+    display: block;
+    margin-right: 10px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.lottery__item>td:nth-child(2) {
+    line-height: 26px;
+    flex-basis: 319px;
+    margin-right: 40px
+}
+
+.lottery__button {
+    padding: 36px 30px 24px 30px;
+    text-align: center;
+}
+
+.lottery__button>div {
+    display: inline-block;
+    padding: 18px 160px;
+    background-color: #e62a45;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    user-select: none;
+}
+
+.lottery__button>div:hover {
+    cursor: pointer;
+}
+
+.prize__modal h3 {
+    text-align: center;
+}
+
+.wrapper.lottery .lottery__modal,
+.wrapper.prize .prize__modal {
+    display: block;
+}
+
+.wrapper.lottery .prize__modal,
+.wrapper.prize .lottery__modal {
+    display: none;
+}
+
+.prize__modal.animating {
+    animation: backInDown .5s 1;
+}
+
+.loading {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000055;
+}
+
+.loading.onload {
+    z-index: 100;
+    display: flex;
+}
+
+.lds-facebook {
+
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #fff;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+
+    70%,
+    100% {
+        top: 24px;
+        height: 32px;
+    }
+}
+
+@keyframes backInDown {
+    0% {
+      transform: translateY(-1200px) scale(0.7);
+      opacity: 0.7;
+    }
+  
+    80% {
+      transform: translateY(0px) scale(0.7);
+      opacity: 0.7;
+    }
+  
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
