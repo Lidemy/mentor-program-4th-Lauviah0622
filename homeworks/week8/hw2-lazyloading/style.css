@@ -21,7 +21,8 @@ a {
 }
 
 .header {
-    position: fixed;
+    /* position: fixed; */
+    position: sticky;
     top: 0;
     width: 100%;
     z-index: 1;
@@ -37,9 +38,10 @@ a {
     margin: 0 auto;
     width: 85vw;
     max-width: 1440px;
-    height: 80px;
+    /* height: 80px; */
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
     
@@ -59,7 +61,10 @@ a {
     display: flex;
     align-items: stretch;
     align-self: stretch;
+    transition: .5s;
 }
+
+
 
 .nav__item+li {
     margin-left: 4ch;
@@ -83,6 +88,56 @@ a {
     background-color: #00000033;
 }
 
+.menu {
+    padding: 10px;
+    margin-right: 22px;
+    display: none;
+    margin-bottom: 10px;
+}
+
+.menu > div {
+    width: 30px;
+    background-color: #00000033;
+    height: 4px;
+}
+
+.menu > div + div {
+    margin-top: 4px;
+}
+
+@media (max-width: 764px) {
+    .nav.closed {
+        height: 0;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .header>div {
+        flex-direction: column;
+        margin: 0;
+        width: 100%;
+    }
+
+    .nav {
+        display: block;
+        flex-direction: column;
+        overflow: hidden;
+        height: 220px;    
+    }
+    .nav__item {
+        display: block;
+        margin-right: 28px;
+        padding: 10px 10px 10px 0;
+        text-align: right;
+    }
+
+    .nav__item+li {
+        margin-left: 0;
+    }
+}
+
 main {
     background-image: url(https://images.unsplash.com/photo-1527334919515-b8dee906a34b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80);
     background-size: cover;
@@ -93,7 +148,7 @@ main {
     width: 75%;
     max-width: 1290px;
     margin: 0 auto;
-    margin-top: 80px;
+    /* margin-top: 100px; */
     text-align: center;
     color: white;
 }
@@ -117,7 +172,8 @@ main {
 .stream {
     /* width: 1px; */
     flex-shrink: 1;
-    flex-basis: 30%;
+    flex-basis: 320px;
+    flex-grow: 1;
     background-color: #ffffff33;
     border-radius: 5px;
     overflow: hidden;
@@ -126,13 +182,15 @@ main {
     backdrop-filter: blur(5px);
 }
 
+
+
 .stream:hover .stream__preview img {
     transform: scale(1.05);
 }
 
 .stream__preview {
-    height: 15vw;
-    max-height: 250px;
+    /* height: 15vw; */
+    /* max-height: 250px; */
     overflow: hidden;
 }
 
@@ -151,8 +209,8 @@ main {
 }
 
 .stream__avatar {
-    height: 4.5vw;
-    width: 4.5vw;
+    height: calc(50px + 0.5vw);
+    width: calc(50px + 0.5vw);
     max-width: 80px;
     max-height: 80px;
     background-size: cover;
