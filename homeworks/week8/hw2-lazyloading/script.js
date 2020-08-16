@@ -120,6 +120,10 @@ function sendXHR(url, callback) {
         getStreams(currentGame, index.nextIndex())
     }
     )
+
+    document.querySelector('.menu').addEventListener('click', function(e) {
+        document.querySelector('.nav').classList.toggle('closed')
+    })
 })()
 
 
