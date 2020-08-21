@@ -58,10 +58,6 @@ $result_user_id =  SQLquery_param_stmt($sql, null, null);
 // print_r($result_user_id);
 $_SESSION['id'] = $result_user_id['result']->fetch_assoc()['id'];
 
-
-
-
-
 // 轉到 index 頁面
 locate_to("index.php");
 
