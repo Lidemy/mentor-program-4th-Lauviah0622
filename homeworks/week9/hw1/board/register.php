@@ -34,6 +34,7 @@
                 <input type="password" name="password" class="deco_bd input">
             </div>
             <p class="error">
+
             <?php 
             if (!empty($_GET["error"])) {
                 $err_msg = array("請填入帳號、密碼、及暱稱喔", 

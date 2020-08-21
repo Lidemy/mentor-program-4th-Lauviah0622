@@ -21,7 +21,6 @@ if (isset($result["errno"])) {
 }
 
 echo "<br>";
-// print_r($_POST['tags']);
 // 更新標籤
 if (!empty($_POST['tags'])) {
     $tags_selected = $_POST['tags'];
