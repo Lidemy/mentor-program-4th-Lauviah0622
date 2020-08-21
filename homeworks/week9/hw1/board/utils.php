@@ -21,7 +21,6 @@ function locate_to($url) {
 function SQLquery_param_stmt($sql, $type_str, $param_arr) {
     global $conn;
     if (is_null($param_arr) || is_null($type_str)) {
-        echo "<br>" . "no parameters" . "<br>";
         $result = $conn->query($sql);
         if (empty($result)) {
             $result_arr = array("result" => $result, "errno" => $conn->errno, "error" => $conn->error);
