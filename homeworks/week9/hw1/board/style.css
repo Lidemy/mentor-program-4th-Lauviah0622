@@ -1,0 +1,290 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #f9f7f9;
+}
+
+.warning {
+    text-align: center;
+    color: #a94442;
+    background-color: #f2dede;
+    padding: 5px;
+}
+
+.btn {
+    width: 10ch;
+    color: #333;
+    border: 1px solid rgb(147, 199, 223);
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background-color: #fff;
+    font-family: inherit;
+    border-radius: 5px;
+    padding: 3px 3px;
+    margin: 3px;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(218, 241, 255);
+}
+
+.board {
+    position: relative;
+    margin: 20px auto;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    max-width: 600px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #cccccc;
+}
+
+.deco_bd {
+    border: 1px solid rgb(147, 199, 223);
+    border-radius: 5px;
+    padding: 3px 0;
+}
+
+.main__title {
+    font-weight: 300;
+    margin: 20px 0;
+    flex-grow: 1;
+}
+
+.log {
+    position: relative;
+    right: 0;
+}
+
+.log--logout {
+    border-color: rgb(226, 134, 134);
+    
+}
+
+.log--logout:hover {
+    background-color: rgb(255, 214, 214);
+}
+
+.log--login {
+    border-color: rgb(152, 226, 134);
+    
+}
+
+.log--login:hover {
+    background-color: rgb(198, 247, 185);
+}
+.form {
+    display: grid;
+    grid-template-columns: fit-content(60%) auto fit-content(40%) ;
+    grid-template-rows: fit-content(40%) fit-content(40%) auto auto;
+    grid-template-areas: 
+    "nickname .  submit"
+    "content-msg error error"
+    "content content ."
+    "tags tags ."
+    ;
+    margin-bottom: 0;
+}
+
+.error {
+    margin: 5px 3px;
+    color: #d43e3c;
+    
+}
+
+.lint {
+    font-size: 0.7em;
+    margin: 0 auto;
+    display: block;
+    text-decoration: underline;
+    
+}
+
+.lint:hover {
+    cursor: pointer;
+}
+
+.form__error {
+    text-align: right;
+    grid-area: error;
+}
+
+.form__submit {
+    grid-area: submit;
+
+}
+
+.form__nickname {
+    grid-area: nickname;
+}
+
+.input {
+    font-size: 1rem;
+    padding-left: 5px;
+    outline: none;
+
+}
+
+
+.form__content-msg {
+    grid-area: content-msg;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.form__content {
+    grid-area: content;
+    padding: 10px;
+    color: #444;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.form__content::placeholder {
+    color:  rgb(113, 174, 202);
+}
+
+.form__content:focus {
+    border: 1px solid rgb(87, 180, 223);
+    outline: none;
+}
+
+.form__tags {
+    grid-area: tags;
+    padding: 10px 0;
+    line-height: 1.5em;
+}
+
+.form__tags >span {
+    display: inline-block;
+}
+
+.comments__wrapper {
+    display: flex;
+    align-items: center ;
+    justify-content: space-between;
+}
+
+.split-line {
+    margin: 25px 5px;
+}
+
+.content {
+    line-height: 1.2em;
+}
+
+.comment {
+    display: flex;
+    padding: 10px 0;
+    margin: 2px 0;
+}
+
+.comment__avatar {
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ccc;
+    flex-shrink: 0;
+    /* align-self: center; */
+}
+
+.comment__info {
+    margin-left: 10px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex: 1 1 200px;
+    
+}
+
+.comment__info > h4 {
+    margin: 0;
+    height: 1em;
+}
+
+.comment__username {
+    color: rgb(67, 156, 197);
+    display: inline-block;
+    max-width: 30ch;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+    /* margin: 0 5px; */
+}
+
+.comment__time {
+    color: #888;
+    font-size: 0.9em;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.comment__time::before {
+    word-spacing: normal;
+    content: "‧ "
+}
+
+.comment__content {
+    width: 100%;
+    white-space: pre-line;
+    word-break: break-all;
+}
+
+textarea.comment__content {
+    margin: 10px 0;
+    height: 10em;
+}
+
+.comment__editsubmit {
+    margin-bottom: 13px;
+}
+
+.comment__delete {
+    color: rgb(238, 116, 116);
+}
+
+.comment__edit {
+    color: rgb(116, 193, 238);
+}
+
+.comment__tags > span {
+    display: inline-block;
+    border: 1px solid #000;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding: 1px 3px;
+}
+
+.board--login {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.login {
+    margin: 0 auto;
+}
+
+.login > *{
+    text-align: center;
+    margin: 10px auto;
+}
+
+.login__submit {
+    margin-top: 30px;
+}
+
+.login > div {
+    right: 12px;
+    position: relative;
+
+}
