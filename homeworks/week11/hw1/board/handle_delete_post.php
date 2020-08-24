@@ -15,6 +15,6 @@
         die("SQL query error");
     }
     // print_r($result);
-    // locate_to("index.php");
+    locate_to("index.php");
 
 ?>
