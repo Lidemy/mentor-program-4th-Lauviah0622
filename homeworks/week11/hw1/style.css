@@ -83,18 +83,32 @@ body {
 .log--login:hover {
     background-color: rgb(198, 247, 185);
 }
+
+.update-nickname > .btn{
+    display: inline-block;
+    
+}
+
+.update-nickname > input[type="text"] {
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 3px;
+    margin: 3px;
+}
+
 .form {
     display: grid;
     grid-template-columns: fit-content(60%) auto fit-content(40%) ;
-    grid-template-rows: fit-content(40%) fit-content(40%) auto auto;
+    grid-template-rows: fit-content(40%) fit-content(40%) auto auto auto;
     grid-template-areas: 
-    "nickname .  submit"
+    "nickname . submit"
     "content-msg error error"
     "content content ."
     "tags tags ."
     ;
     margin-bottom: 0;
 }
+
 
 .error {
     margin: 5px 3px;
@@ -127,6 +141,7 @@ body {
 .form__nickname {
     grid-area: nickname;
 }
+
 
 .input {
     font-size: 1rem;
@@ -182,13 +197,13 @@ body {
     line-height: 1.2em;
 }
 
-.comment {
+.comment, .user {
     display: flex;
     padding: 10px 0;
     margin: 2px 0;
 }
 
-.comment__avatar {
+.comment__avatar, .user__avatar {
     margin-top: 5px;
     width: 50px;
     height: 50px;
@@ -198,7 +213,7 @@ body {
     /* align-self: center; */
 }
 
-.comment__info {
+.comment__info, .user__info {
     margin-left: 10px;
     flex-grow: 1;
     flex-shrink: 1;
@@ -206,12 +221,16 @@ body {
     
 }
 
-.comment__info > h4 {
+.user__info {
+    align-self: center;
+}
+
+.comment__info > h4, .user__info > h4 {
     margin: 0;
     height: 1em;
 }
 
-.comment__username {
+.comment__username, .user__username, .user__nickname, .user__status {
     color: rgb(67, 156, 197);
     display: inline-block;
     max-width: 30ch;
@@ -220,6 +239,18 @@ body {
     vertical-align: middle;
     white-space: nowrap;
     /* margin: 0 5px; */
+}
+
+.user__username, .user__nickname, .user__status {
+    max-width: auto;
+    overflow: none;
+}
+
+.user__status {
+    display: block;
+    color: rgb(67, 156, 197);
+
+
 }
 
 .comment__time {
@@ -265,6 +296,10 @@ textarea.comment__content {
     padding: 1px 3px;
 }
 
+.comment__status {
+
+}
+
 .board--login {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -287,4 +322,44 @@ textarea.comment__content {
     right: 12px;
     position: relative;
 
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    
+}
+
+.page a {
+    margin: 0px 10px;
+    font-size: 1.2rem;
+    color: rgb(67, 156, 197);
+    padding: 3px;
+}
+
+.page a:hover {
+    text-decoration:underline;
+}
+
+.page a.current {
+    text-decoration:underline;
+
+}
+
+.users__back {
+    display: block;
+    float: right;
+    text-align: right;
+    margin: 10px;
+}
+
+.user__setting {
+    display: inline-block;
+    margin-left: auto;
+}
+
+.user__status {
+    display: inline-block;
 }

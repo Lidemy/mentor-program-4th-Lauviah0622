@@ -1,3 +1,11 @@
+<?php
+ session_start();
+ require_once "utils.php";
+ if ($_SESSION["id"]) {
+    locate_to('index.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

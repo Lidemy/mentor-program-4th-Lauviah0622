@@ -3,7 +3,20 @@ session_start();
 require_once "utils.php";
 require_once "handle_tags.php";
 
-// print_r($_POST);
+// 確認有沒有登入
+$id = $_SESSION["id"];
+if (empty($id)) {
+    locate_to("login.php?error=0");
+}
+
+
+// 拿用戶資料
+$user = new User($id);
+
+// 確認有沒有權限
+if ($user->auth->add_comment == false) {
+    locate_to('index.php?error=4');
+}
 
 // 有 new tag
 $new_tag     = NULL;
@@ -21,17 +34,15 @@ if (!empty($_POST['new_tag'])) {
     $last_tag_id = $new_tag['id'];
 }
 
-// exit();
 $content = $_POST['content'];
-
-$id = $_SESSION["id"];
-if (!is_All_Exist($content, $id)) {
-    locate_to("index.php?error=0");
+// 確認有沒有輸入內容
+if (!is_All_Exist($content)) {
+    locate_to("index.php?error=1");
 }
+
+// 新增新留言
 // $sql    = "INSERT INTO Lauviah_board_comments(user_id, content) VALUES ($id, '$content')";
 $sql    = "INSERT INTO Lauviah_board_comments(user_id, content) VALUES (?, ?)";
-echo $sql;
-// exit();
 $result = SQLquery_param_stmt($sql, "is", array($id, $content));
 if (isset($result["errno"])) {
     print_r($result);

@@ -1,20 +1,36 @@
 <?php
-session_start();
 require_once "utils.php";
 require_once "handle_tags.php";
 // print_r($_POST);
 
 // exit();
 
-$id = $_POST['id'];
+$user = get_user();
+$comment_id = $_POST['id'];
 if (empty($_POST['content'])) {
     locate_to('index.php?edit=' . $_POST['id']);
 }
 $content = $_POST['content'];
 
-// $sql = "UPDATE Lauviah_board_comments SET content = '$content' WHERE id = $id";
+
+// 確認有沒有權限
+if (empty($user->auth->edit_comment)) {
+    locate_to('index.php?error=4');
+    
+} else if ($user->auth->edit_comment === "self") {
+    $sql_get_comment_userID = "SELECT user_id FROM Lauviah_board_comments WHERE id = $comment_id";
+    $result = SQLquery_param_stmt($sql_get_comment_userID, null, null);
+    $comment_user_id = $result["result"]->fetch_assoc()["user_id"];
+
+    // 如果是 self 而且不是自己的文章
+    if ($comment_user_id != $user->id) {
+        locate_to('index.php?error=4');
+    }
+} 
+
+// $sql = "UPDATE Lauviah_board_comments SET content = '$content' WHERE id = $comment_id";
 $sql = "UPDATE Lauviah_board_comments SET content = ? WHERE id = ?";
-$result = SQLquery_param_stmt($sql, 'si', array($content, $id));
+$result = SQLquery_param_stmt($sql, 'si', array($content, $comment_id));
 if (isset($result["errno"])) {
     print_r($result);
     die("SQL query error");

@@ -6,6 +6,11 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
 
+    // 已經登入了
+    if ($_SESSION["id"]) {
+        locate_to('index.php');
+    }
+
     // 0. 有東西沒填
     if (!is_All_Exist($username, $password)) {
         locate_to("login.php?error=0");
