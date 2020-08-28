@@ -14,7 +14,11 @@ if (!empty($_SESSION["id"])) {
 }
 
 $edit = NULL;
-// print_r($userdata);
+echo "<br>";
+echo "<br>";
+echo "<br>";
+print_r($user->auth);
+echo "<br>";
 
 ?>
 <!DOCTYPE html>
@@ -25,6 +29,7 @@ $edit = NULL;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -33,6 +38,81 @@ $edit = NULL;
     </header>
     <main class="board ">
         <a href="index.php"><div class="btn users__back">回到留言板</div></a>
+        <section class="settings">
+        <?php if ($user->status === "super_admin") {
+            $sql = "SELECT * FROM Lauviah_board_status";
+            $result_status = new SQLquery($sql, null, null);
+            while ($row = $result_status->result->fetch_assoc()) {
+                if ($row["name"] === "super_admin") {
+                    continue;
+                }
+                // print_r($row);
+            ?>
+            <div class="setting">
+                <p><?php echo $row['name'] ?></p>
+                <form>
+                    <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
+                    <div data-default="<?php echo $row["can_add_comment"]?>">
+                        <span>新增留言</span>
+                        否<input type="radio" name="can_add_comment" id="" value="0" >
+                        可<input type="radio" name="can_add_comment" id="" value="1">
+                    </div>
+                    <div data-default="<?php echo $row["can_edit_comment"]?>">
+                        <span>編輯留言</span>
+                        無<input type="radio" name="can_edit_comment" id="" value="no">
+                        自己<input type="radio" name="can_edit_comment" id="" value="self">
+                        所有人<input type="radio" name="can_edit_comment" id="" value="all">
+                    </div>
+                    <div data-default="<?php echo $row["can_delete_comment"]?>">
+                        <span>刪除留言</span>
+                        無<input type="radio" name="can_delete_comment" id="" value="no">
+                        自己<input type="radio" name="can_delete_comment" id="" value="self">
+                        所有人<input type="radio" name="can_delete_comment" id="" value="all">
+                    </div>
+                    <div data-default="<?php echo $row["can_set_status"]?>">
+                        <span>設定權限</span>
+                        無<input type="radio" name="can_set_status" id="" value="no">
+                        管理員以下<input type="radio" name="can_set_status" id="" value="admin">
+                    </div>
+                    <input type="submit" value="OK">
+                </form>
+                <a href=""><p>刪除</p></a>
+            </div>
+
+        <?php
+            }
+        } 
+        ?>
+        </section>
+        <section class="add_status">
+            <h3>新增權限</h3>
+            <form>
+                <input type="text" name="name">
+                <div data-default="<?php echo $row["can_add_comment"]?>">
+                    <span>新增留言</span>
+                    否<input type="radio" name="can_add_comment" id="" value="0" >
+                    可<input type="radio" name="can_add_comment" id="" value="1">
+                </div>
+                <div data-default="<?php echo $row["can_edit_comment"]?>">
+                    <span>編輯留言</span>
+                    無<input type="radio" name="can_edit_comment" id="" value="no">
+                    自己<input type="radio" name="can_edit_comment" id="" value="self">
+                    所有人<input type="radio" name="can_edit_comment" id="" value="all">
+                </div>
+                <div data-default="<?php echo $row["can_delete_comment"]?>">
+                    <span>刪除留言</span>
+                    無<input type="radio" name="can_delete_comment" id="" value="no">
+                    自己<input type="radio" name="can_delete_comment" id="" value="self">
+                    所有人<input type="radio" name="can_delete_comment" id="" value="all">
+                </div>
+                <div data-default="<?php echo $row["can_set_status"]?>">
+                    <span>設定權限</span>
+                    無<input type="radio" name="can_set_status" id="" value="no">
+                    管理員以下<input type="radio" name="can_set_status" id="" value="admin">
+                </div>
+                <input type="submit" value="OK">
+            </form>
+        </section>
         <section class="users">
             <?php
 $sql          = "SELECT id, username, nickname, status FROM Lauviah_board_users";
@@ -82,7 +162,7 @@ while ($row = $result_users->result->fetch_assoc()) {; // print_r($row); ?>
         </section>
 
     </main>
-
+    <script src="./users.js"></script>
 </body>
 
 </html>

@@ -105,28 +105,11 @@ class Auth {
     public $delete_comment = false;
     public $set_status = false;
 
-    function __construct ($status) {
-        if ($status === "super_admin") {
-            $this->add_comment = true;
-            $this->edit_comment = "all";
-            $this->delete_comment = "all";
-            $this->set_status = true;
-        }
-        if ($status === "admin") {
-            $this->add_comment = true;
-            $this->edit_comment = "all";
-            $this->delete_comment = "all";
-        }
-        if ($status === "member") {
-            $this->add_comment = true;
-            $this->edit_comment = "self";
-            $this->delete_comment = "self";
-        }
-        if ($status === "baned_member") {
-            $this->add_comment = false;
-            $this->edit_comment = "self";
-            $this->delete_comment = "self";
-        }
+    function __construct ($add_cmt, $edit_cmt, $delete_cmt, $set_status) {
+       $this->add_comment = $add_cmt;
+       $this->edit_comment = $edit_cmt;
+       $this->delete_comment = $delete_cmt;
+       $this->set_status = $set_status;
     }
 
    
@@ -149,12 +132,12 @@ class User {
             $this->status = new Auth(null);
             return;
         }
-        $sql = "SELECT id , username, nickname, status FROM Lauviah_board_users WHERE id = ?";
-        
+        $sql = "SELECT * FROM Lauviah_board_users NATURAL LEFT JOIN Lauviah_board_status WHERE id = ?";
         $query = new SQLquery($sql, "i", array($id));
         $row = $query->result->fetch_assoc();
+        print_r($row);
         $this->status = $row['status'];
-        $this->auth = new Auth($row["status"]);
+        $this->auth = new Auth($row["can_add_comment"], $row["can_edit_comment"], $row["can_delete_comment"], $row["can_set_status"]);
         $this->id = $row['id'];
         $this->nickname = $row["nickname"];
         $this->username = $row["username"];
@@ -175,11 +158,6 @@ function get_user () {
     // 拿用戶資料
     return new User($id);
 }
-
-
-
-
-
 
 
 ?>
