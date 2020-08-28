@@ -78,6 +78,9 @@ class SQLquery {
         } else {
             $stmt = $conn->prepare($sql);
             $stmt->bind_param($type_str, ...$param_arr);
+            echo "    ";
+            print_r($stmt);
+            echo "    ";
             $result = $stmt->execute();
             if (empty($result)) {
                 $this->result = $stmt->get_result();
@@ -88,10 +91,6 @@ class SQLquery {
             $this->stmt = $stmt;
         }
     }
-
-
-    
-    
 }
 
 
@@ -135,7 +134,6 @@ class User {
         $sql = "SELECT * FROM Lauviah_board_users NATURAL LEFT JOIN Lauviah_board_status WHERE id = ?";
         $query = new SQLquery($sql, "i", array($id));
         $row = $query->result->fetch_assoc();
-        print_r($row);
         $this->status = $row['status'];
         $this->auth = new Auth($row["can_add_comment"], $row["can_edit_comment"], $row["can_delete_comment"], $row["can_set_status"]);
         $this->id = $row['id'];
