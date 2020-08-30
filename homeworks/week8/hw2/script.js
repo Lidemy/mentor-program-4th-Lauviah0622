@@ -28,6 +28,10 @@ const page = (function () {
                 prevPage.classList.remove('disabled')
             }
             return
+        },
+        resetPage() {
+            currentPage = 1;
+            return currentPage
         }
     }
 })();
@@ -53,7 +57,7 @@ function getGames() {
         for (let i = 0; i < listItems.length; i++) {
             const listItem = listItems[i];
             listItem.addEventListener('click', function () {
-                getStreams(this.innerText, page.nextPage());
+                getStreams(this.innerText, page.resetPage());
             })
 
         }
@@ -114,5 +118,9 @@ function sendXHR(url, callback) {
     document.querySelector('#prevBtn').addEventListener('click', () => {
         console.log('123')
         getStreams(currentGame, page.prevPage())
+    })
+
+    document.querySelector('.menu').addEventListener('click', function(e) {
+        document.querySelector('.nav').classList.toggle('closed')
     })
 })()
