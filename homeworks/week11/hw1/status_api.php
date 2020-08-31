@@ -1,22 +1,8 @@
 <?php
 require_once "utils.php";
 
-print_r($_SERVER["REQUEST_METHOD"]);
+// print_r($_SERVER["REQUEST_METHOD"]);
 $method = $_SERVER["REQUEST_METHOD"];
-
-class status {
-    public $add_comment = false;
-    public $edit_comment = false;
-    public $delete_comment = false;
-    public $set_status = false;
-
-    function __construct ($add_cmt, $edit_cmt, $delete_cmt, $set_status) {
-       $this->add_comment = $add_cmt;
-       $this->edit_comment = $edit_cmt;
-       $this->delete_comment = $delete_cmt;
-       $this->set_status = $set_status;
-    }
-}
 
 class API_Response {
     public $ok;
@@ -61,7 +47,40 @@ if ($method === "GET") {
 }
 if ($method === "PATCH") {
     parse_str(file_get_contents('php://input'), $_PATCH);
-    print_r($_PATCH);
+    // print_r($_PATCH);
+    $update_querys = array();
+    $props_type = "";
+    $update_values = array();
+    foreach($_PATCH as $prop => $value) {
+        if ($prop === "id") {
+            continue;
+        }
+        $str = "$prop = ?";
+        array_push($update_querys, $str);
+        array_push($update_values, $value);
+        if ($prop === "can_add_comment") {
+            $props_type .= "i";
+        } else {
+            $props_type .= "s";
+        }
+    }
+    array_push($update_values, $_PATCH['id']);
+    
+    // echo $props_type . 'i';
+    $props_type .= "i";
+    $update_query_str = implode(", ", $update_querys);
+    $sql = "UPDATE Lauviah_board_status SET $update_query_str WHERE status_id = ?";
+    // echo $sql;
+    // echo $props_type;
+    // print_r($update_values);
+    // exit();
+    $result = new SQLquery($sql,  $props_type, $update_values);
+    // print_r($result);
+    $res = new API_Response(true, ["affected_rows" => $result->stmt->affected_rows]);
+    echo $res->toJSON();
+
+
+
 }
 if ($method === "DELETE") {
     if (empty($_REQUEST["id"])) {
@@ -72,12 +91,14 @@ if ($method === "DELETE") {
     $id = $_REQUEST["id"];
     $sql = "DELETE FROM Lauviah_board_status WHERE status_id = ?";
     $result = new SQLquery($sql, "i", array($id));
-    $res = new API_Response(true, $result->stmt->affected_rows);
+    $res = new API_Response(true, ["affected_rows" => $result->stmt->affected_rows]);
     
     echo $res->toJSON();
 
 }
 if ($method === "POST") {
+    print_r(file_get_contents('php://input'));
+    print_r($_POST);
     if (empty($_POST["name"])) {
         $res = new API_Response(false, "no name");
         echo $res->toJSON();

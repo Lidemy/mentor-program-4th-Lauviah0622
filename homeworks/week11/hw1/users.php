@@ -41,11 +41,11 @@ while($row_status = $result_status_can_set->result->fetch_assoc()) {
         Warning: 此為測試用留言板，請勿使用您常用與真實的帳號密碼，以免資料外洩！！！
     </header>
     <main class="board ">
-        <a href="index.php"><div class="btn users__back">回到留言板</div></a>
+        <a href="index.php"><div class="btn users__back">回到留言</div></a>
         <?php
         if ($user->status === "super_admin") {
         ?>
-            <a href="status.php"><div class="btn users__back">身分設定</div></a>
+            <a href="status.html"><div class="btn">權限設定</div></a>
         <?php
         }
         ?>

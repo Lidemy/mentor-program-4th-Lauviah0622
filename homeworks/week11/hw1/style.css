@@ -350,9 +350,9 @@ textarea.comment__content {
 
 .users__back {
     display: block;
-    float: right;
-    text-align: right;
-    margin: 10px;
+    /* float: right; */
+    /* text-align: center; */
+    
 }
 
 .user__setting {
@@ -362,4 +362,8 @@ textarea.comment__content {
 
 .user__status {
     display: inline-block;
+}
+
+.status {
+    padding: 10px 5px;
 }
