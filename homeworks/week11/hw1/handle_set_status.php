@@ -10,12 +10,17 @@
     if (!is_All_Exist($_POST['user_id'], $_POST['status'])) {
         locate_to('users.php');
     }
-    if (!in_array($_POST['status'], $all_status)) {
+    $status_id = $_POST['user_id'];
+    
+    $target_status = new SQLquery("SELECT can_set_status FROM Lauviah_board_status", null, null);
+    $target_status = $target_status->result->fetch_assoc()['can_set_status'];
+    print_r($target_status);
+    if (!$user->auth->set_status > $target_status) {
         locate_to('users.php');
     }
 
-    $sql = "UPDATE Lauviah_board_users SET status = ? WHERE id = ?";
-    $result = new SQLquery($sql, "si", array($_POST['status'], $_POST['user_id']));
+    $sql = "UPDATE Lauviah_board_users SET status_id = ? WHERE id = ?";
+    $result = new SQLquery($sql, "ii", array($_POST['status'], $_POST['user_id']));
 
     echo "<br>";
     echo "<br>";

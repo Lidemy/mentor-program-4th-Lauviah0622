@@ -1,7 +1,7 @@
 <?php
  session_start();
  require_once "utils.php";
- if ($_SESSION["id"]) {
+ if (!empty($_SESSION["id"])) {
     locate_to('index.php');
 }
 
