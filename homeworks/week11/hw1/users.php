@@ -5,9 +5,10 @@ session_start();
 
 if (empty($_SESSION["id"])) {
     $user = new User(null);
-} 
-$id = $_SESSION["id"];
-$user = new User($id);
+} else {
+    $id = $_SESSION["id"];
+    $user = new User($id);
+}
 
 $sql_users = "SELECT u.id, u.nickname, u.username, s.name as status_name, s.can_set_status FROM Lauviah_board_users as u NATURAL LEFT JOIN Lauviah_board_status as s ORDER BY u.id";
 $result_users = new SQLquery($sql_users, null, null);

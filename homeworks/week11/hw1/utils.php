@@ -19,8 +19,6 @@ function locate_to($url) {
 // 如果後面兩個參數是 null 就不使用 Parameterized Query, 有參數就使用
 // 後面的 array 依次放入替代的參數
 
-
-
 function SQLquery_param_stmt($sql, $type_str, $param_arr) {
     global $conn;
     if (is_null($param_arr) || is_null($type_str)) {
@@ -107,9 +105,6 @@ class Auth {
        $this->delete_comment = $delete_cmt;
        $this->set_status = $set_status;
     }
-
-   
-
 
 }
 

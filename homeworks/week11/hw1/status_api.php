@@ -4,6 +4,9 @@ require_once "utils.php";
 // print_r($_SERVER["REQUEST_METHOD"]);
 $method = $_SERVER["REQUEST_METHOD"];
 
+
+$user = get_user();
+
 class API_Response {
     public $ok;
     public $content;
