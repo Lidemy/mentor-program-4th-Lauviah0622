@@ -38,6 +38,7 @@ if (isset($result["errno"])) {
 
 echo "<br>";
 // 更新標籤
+
 if (!empty($_POST['tags'])) {
     $tags_selected = $_POST['tags'];
     $sql_tags      = "SELECT * FROM Lauviah_board_tags";
@@ -59,6 +60,6 @@ if (!empty($_POST['tags'])) {
 }
 
 // print_r($result);
-locate_to("index.php");
+// locate_to("index.php");
 
 ?>
