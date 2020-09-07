@@ -240,15 +240,26 @@ Lax 的話會稍微寬鬆一點，可以在特定幾種常見的狀況也會送�
 
 ---
 
-這裡原本是想寫 double submit cookie  的東西，
-
-
-
-```
-set-cookie: csrftoken=29k5011j3845n1382g
+這裡原本是想寫 double submit cookie  的東西，不過還是有修地方不是很懂。
 
 
 ```
+Set-Cookie: csrftoken=fj1iro2jro12ijoi1
+
+<form action="https://small-min.blog.com/delete" method="POST">
+  <input type="hidden" name="id" value="3"/>
+  <input type="hidden" name="csrftoken" value="fj1iro2jro12ijoi1"/>
+  <input type="submit" value="刪除文章"/>
+</form>
+```
+
+有提到說會用 cookie 的方式是因為駭客沒辦法設置同 domain 的 cookie，那既然這樣子為什麼還要放一個 csrftoken 在 input 裡面？
+
+如果有這樣一個方式，原本登入的時候給一個 session-id，然後在登入的時候再設定一個  cookie 可能是 isDangerOperate=true，這樣 server 端就可以確認了？雖然這樣的方式跟上面的 csrftoken 很像，但是也不用經過查資料庫，只要驗證有沒有這個 cookie 就可以了。
+
+![](https://i.imgur.com/JNSqpHu.png)
+
+如果是用上面的方法，那好像就不用再設置一個 cookie 了？
 
 
 
