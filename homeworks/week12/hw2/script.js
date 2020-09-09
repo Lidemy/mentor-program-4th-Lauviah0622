@@ -263,14 +263,11 @@ todoList.save = () => {
     dataType: "json",
     method: "POST",
     success: (data) => {
-      const promise = navigator.clipboard.writeText('http://mentor-program.co/mtr04group1/Lauviah/week12/hw2/?id=' + data.insert_id);
-      promise.then(() => {
-        popup('Saving Success!! Link have been copy to yuor clipboard');
-        setTimeout(() => popup(false), 500);
-      }, ()=> {
-        popup('Ooops! saving fail , try again');
-      })
-      console.log(data);
+      let url = 'http://mentor-program.co/mtr04group1/Lauviah/week12/hw2/?id=' + data.insert_id;
+      copy (url);
+      popup('Saving Success!! Link have been copy to yuor clipboard');
+      setTimeout(() => popup(false), 500);
+      console.log(url);
     }
   })
 }
@@ -340,6 +337,16 @@ function addTaskButtonHandeler() {
   todoList.initialUITask();
 })()
 
+function copy (content) {
+  const copyEle = document.querySelector('#for-copy');
+  console.log(copyEle);
+  copyEle.value = content;
+  copyEle.focus();
+  copyEle.select();
+  console.log(copyEle.value);
+  document.execCommand('copy');
+  
+}
 
 function popup(msg) {
   const popup = $(".popup");
