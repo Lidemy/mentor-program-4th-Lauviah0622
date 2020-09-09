@@ -40,7 +40,7 @@
                     site_key,
                     nickname
                 },
-                url: "http://localhost/mentor-program/week12/hw1/bulletin_api.php",
+                url: "http://mentor-program.co/mtr04group1/Lauviah/week12/hw1/bulletin_api.php",
                 success: (data) => {
                     console.log(data);
 
@@ -58,7 +58,7 @@
             console.log(id);
             $.ajax({
                 method: "GET",
-                url: "http://localhost/mentor-program/week12/hw1/bulletin_api.php?site_key=asdasd&id=" + id,
+                url: "http://mentor-program.co/mtr04group1/Lauviah/week12/hw1/bulletin_api.php?site_key=asdasd&id=" + id,
                 success: (data) => {
                     console.log(data);
                     addCard(data.content.posts, false);
@@ -70,7 +70,7 @@
             $('#loading').show();
             $.ajax({
                 method: "GET",
-                url: 'http://localhost/mentor-program/week12/hw1/bulletin_api.php?site_key=asdasd&limit=5&offset=' + page * 5,
+                url: 'http://mentor-program.co/mtr04group1/Lauviah/week12/hw1/bulletin_api.php?site_key=asdasd&limit=5&offset=' + page * 5,
                 success: (data) => {
                     for(let post of data.content.posts) {
                         addCard(post, true);

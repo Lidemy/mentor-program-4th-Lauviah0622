@@ -256,14 +256,14 @@ todoList.save = () => {
   })));
 
   $.ajax({
-    url: 'http://localhost/mentor-program/week12/hw2/todo.php',
+    url: 'http://mentor-program.co/mtr04group1/Lauviah/week12/hw2/todo.php',
     data: {
       json: data
     },
     dataType: "json",
     method: "POST",
     success: (data) => {
-      const promise = navigator.clipboard.writeText('http://localhost/mentor-program/week12/hw2/?id=' + data.insert_id);
+      const promise = navigator.clipboard.writeText('http://mentor-program.co/mtr04group1/Lauviah/week12/hw2/?id=' + data.insert_id);
       promise.then(() => {
         popup('Saving Success!! Link have been copy to yuor clipboard');
         setTimeout(() => popup(false), 500);
@@ -316,7 +316,7 @@ function addTaskButtonHandeler() {
   if (id) {
     // console.log(213123);
     $.ajax({
-      url: 'http://localhost/mentor-program/week12/hw2/todo.php?id=' + id,
+      url: 'http://mentor-program.co/mtr04group1/Lauviah/week12/hw2/todo.php?id=' + id,
       metohd: 'GET',
       success: (data) => {
         console.log(data);
