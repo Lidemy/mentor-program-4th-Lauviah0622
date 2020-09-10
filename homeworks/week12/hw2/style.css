@@ -220,8 +220,8 @@ body {
 }
 
 .list-item__delete p::after {
-  right: -40px;
-  top: 4px;
+  right: -46.5px;
+    top: 3px;
   font-size: 10px;
   content: '刪除';
 
@@ -413,8 +413,6 @@ body {
   z-index: 999;
   user-select: none;
   text-shadow: 2px 2px 10px #aaa;
-  
-  
 }
 
 

@@ -34,7 +34,7 @@ class Task {
         classes.push('list-item--done');
       }
       newEle.classList.add(...classes);
-      newEle.innerHTML = listItemTEMPLATE.replace(/{{name}}/g, taskName || '沒事就找事');
+      newEle.innerHTML = listItemTEMPLATE.replace(/{{name}}/g, escapeHtml(taskName) || '沒事就找事');
 
       // add Listener
       newEle.addEventListener('click', function itemBtnHandler(e) {
@@ -92,7 +92,7 @@ class Task {
   }
 
   rename(newname) {
-    this.name = newname;
+    this.name = escapeHtml(newname);
     return this;
   }
 };
@@ -359,5 +359,11 @@ function popup(msg) {
   
 }
 
-
-
+function escapeHtml(unsafe) {
+  return unsafe
+       .replace(/&/g, "&amp;")
+       .replace(/</g, "&lt;")
+       .replace(/>/g, "&gt;")
+       .replace(/"/g, "&quot;")
+       .replace(/'/g, "&#039;");
+}
