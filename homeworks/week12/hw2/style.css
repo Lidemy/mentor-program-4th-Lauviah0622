@@ -197,7 +197,7 @@ body {
 
 
 .list-item__delete p:hover,
-.list-item__check p:hover {
+.list-item__check p:hover, .demo-icon:hover {
   cursor: pointer;
 }
 
