@@ -7,7 +7,7 @@
     }
     $id = $_GET['id'];
     
-    $sql = "DELETE FROM Lauviah_board_comments WHERE id = $id";
+    $sql = "UPDATE Lauviah_board_comments SET is_deleted = 1 WHERE id = $id";
     $result = SQLquery_param_stmt($sql, null, null);
 
     if (empty($result["result"])) {
@@ -15,6 +15,6 @@
         die("SQL query error");
     }
     // print_r($result);
-    locate_to("index.php");
+    // locate_to("index.php");
 
 ?>

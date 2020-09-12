@@ -1,0 +1,262 @@
+* {
+    /* border: 1px solid #000; */
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h5 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+}
+
+li {
+    list-style-type: none;
+}
+
+
+
+body {
+    font-family: "微軟正黑體", sans-serif;
+    /* min-height: 100vh; */
+}
+
+.wrapper {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+
+}
+
+/* ======header start======= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    height: 81px;
+    padding: 0 90px;
+    
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    color: #787878;
+}
+
+.menu>a+a {
+    margin-left: 20px;
+}
+
+.header__left {
+    display: flex;
+}
+
+.header__logo {
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+/* ======header end======= */
+
+
+/* ======main start====== */
+.main__bg {
+    position: absolute;
+    background: linear-gradient(to bottom, #000000, #434343);
+    height: 241px;
+    width: 100%;
+    z-index: -1;
+}
+
+.title {
+    color: #fff;
+    padding-top: 76px;
+    padding-bottom: 50px;
+
+}
+
+.title>* {
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 28px;
+
+}
+
+.title h3 {
+    font-size: 14px;
+    margin-top: 26px;
+
+}
+
+.posts {
+    margin: 0 auto;
+    max-width: 920px;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 200px;
+}
+
+.post {
+    border: 1px solid #000;
+    padding: 30px;
+}
+
+.post--editable {
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+.post + .post {
+    margin-top: 24px;
+}
+
+.post__content {
+    position: relative;
+    white-space: pre-line;
+    word-break: break-word;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 19px;
+    margin-bottom: 36px;
+    line-height: 1.43;
+}
+
+.post__title {
+    text-shadow: 1.4px 1.4px 2px #efefef;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: right;
+    position: relative;
+}
+
+.post__btn {
+    border: 1px solid #a8a8a8;
+    color: #a8a8a8;
+    padding: 6px 12px;
+    font-size: 14px;
+    margin: 0 3px;
+}
+
+.post__info {
+    line-height: 40px;
+    font-size: 14px;
+    color: #8f8f8f;
+    background-color: #eeeeee;
+    padding: 0 22px;
+    margin-top: 20px;
+}
+
+.post__info > *::before {
+    /* content: ""; */
+    display: inline-block;
+    /* font-size: 14px; */
+    vertical-align: middle;
+    width: 15px;
+    margin-right: 11px;
+}
+
+.post__info > .category {
+    margin-left: 13px;
+}
+
+.post__info > .time::before {
+    content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJwcmVmaXhfX+WcluWxpF8xIiB4PSIwIiB5PSIwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMEgyNFYyNEgweiIvPgogICAgPHBhdGggZmlsbD0iIzhGOEY4RiIgZD0iTTEyIDJDNi41IDIgMiA2LjUgMiAxMnM0LjUgMTAgMTAgMTAgMTAtNC41IDEwLTEwUzE3LjUgMiAxMiAyem0wIDE4Yy00LjQgMC04LTMuNi04LThzMy42LTggOC04IDggMy42IDggOC0zLjYgOC04IDh6bS41LTEzSDExdjZsNS4yIDMuMi44LTEuMy00LjUtMi43Vjd6Ii8+Cjwvc3ZnPgo=');
+
+}
+
+.post__info > .category::before {
+    content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJwcmVmaXhfX+WcluWxpF8xIiB4PSIwIiB5PSIwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgyNHYyNEgwVjB6Ii8+CiAgICA8cGF0aCBmaWxsPSIjOEY4RjhGIiBkPSJNOS4yIDZsMiAySDIwdjEwSDRWNmg1LjJtLjgtMkg0Yy0xLjEgMC0yIC45LTIgMnYxMmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjhjMC0xLjEtLjktMi0yLTJoLThsLTItMnoiLz4KPC9zdmc+Cg==');
+
+}
+
+
+
+.post__readmore {
+    padding: 12px 15px;
+    width: fit-content;
+    font-size: 14px;
+    border: 1px solid #000;
+}
+
+.post--editable .time {
+    margin-left:   2ch
+}
+
+
+/* ======main end====== */
+
+
+/* ======edit start ====== */
+.edit__form > *{
+    margin-top: 20px;
+}
+
+.edit__form > [name="title"] {
+    width: 30ch;
+
+}
+
+.edit__form > [name="content"] {
+    height: 10rem;
+}
+
+.ck-content {
+    min-height: 200px;
+}
+/* ======edit end ====== */
+
+/* ======login start====== */
+.login_wrapper {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    height: 500px;
+    width: 700px;
+    border: solid 1px #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+
+    padding: 8em;
+    
+}
+.input__wrapper {
+    padding: 10px;
+}
+
+
+/* ======login end====== */
+
+
+
+/* ======footer start====== */
+.footer {
+    line-height: 35px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+}
+/* ======footer end====== */
