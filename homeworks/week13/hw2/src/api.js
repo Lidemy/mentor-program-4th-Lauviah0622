@@ -21,7 +21,6 @@ function addPost(apiUrl, siteKey, nickname, content, success_cb) {
         return res.json()
     }).then(json => {
         success_cb(json)
-        console.log(json);
     })
 }
 

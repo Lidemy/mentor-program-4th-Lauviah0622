@@ -1,10 +1,8 @@
-import $ from 'jquery';
 import {createCardHtml} from './template'
 
 
 function showErrorMsg (text) {
     return (err) => {
-        console.log(text);
         throw new Error(err)
     };
 }

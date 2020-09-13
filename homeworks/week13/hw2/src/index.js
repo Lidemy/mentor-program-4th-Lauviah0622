@@ -15,7 +15,8 @@ export function init(options) {
     containerElement.append(formTemplate);
 
 
-    // 懶得改 code 就用超髒的方式XD，不過是因為沒有用到 CSS，不然這麼 Common 的 classname 可能會網站本身的 CSS 蓋過去
+// 懶得改 code 就用超髒的方式XD，不過是因為沒有用到 CSS，不然常見的 classname 可能會網站本身的 CSS 蓋過去
+// 用這個方式有遇到一個問題是 $ 裡面有用到 init 的參數，就沒辦法把 $ 丟到其他 module，需要操作 dom 的部分都要在 index.js 裡面處理
     function $(selector) {
         let s = `${options.container} ${selector}`;
         return jquery(s)
