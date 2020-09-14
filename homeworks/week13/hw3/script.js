@@ -10,11 +10,11 @@ const index = (function () {
             return current;
         },
         get current() {
-            return current
+            return current;
         },
         reset() {
             current = 0;
-            return current
+            return current;
         }
     }
 })();
@@ -54,7 +54,6 @@ function getGames() {
 }
 
 function getStreams(gameName, nextIndex) {
-    console.log(nextIndex);
     const url = basicURL + `streams/?game=${gameName}&limit=${UNIT}&offset=${nextIndex}`;
     sendRequest(url, (data) => {
         const gallery = document.querySelector('.streams__gallery');
@@ -89,7 +88,6 @@ async function sendRequest(url, callback) {
             headers: new Headers({
                 'Client-ID': 'qi079afnud4wnc8d9c5ii2x863sq7l',
                 'Accept': 'application/vnd.twitchtv.v5+json',
-
             })
         });
         const json = await response.json();
@@ -107,7 +105,6 @@ async function sendRequest(url, callback) {
     window.addEventListener('scroll', (e) => {
         if (!timeout) return;
         timeout = false;
-        console.log('triggggger')
         const maxScroll = document.querySelector('body').offsetHeight - window.innerHeight;
         // totalHeight - screenHeight
         const restScroll = maxScroll - window.scrollY;
@@ -127,8 +124,6 @@ async function sendRequest(url, callback) {
 const observer = new IntersectionObserver(function (observes) {
     observes.forEach(observe => {
         if (!observe.isIntersecting) return;
-        // console.log(observe.target);
-        // console.log(observe.isIntersecting)
 
         const preview = observe.target.children[0].children[0].children[0];
         const avatar = observe.target.children[1].children[0].children[0]

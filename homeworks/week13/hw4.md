@@ -59,11 +59,11 @@ li.red.level { }	    [0, 2, 1]
 #li a:hover + div::before   [1, 1, 3]
 ```
 
-都算出來之後，就可以開始比較銓重了。比較各個的大小，越左邊的權重最高，高權重的如果比較有結果，後面就不用比較。
+都算出來之後，就可以比較權重了。比較各個的大小，越左邊的權重最高，高權重的如果比較有結果，後面就不用比較。
 
 ```
-selectorA => [3, 0, 0]
-selectorB => [2, 4, 6]
+selectorA => [1, 0, 0]
+selectorB => [0, 2, 3]
 ```
 上面的情況，A 的第三類已經高於 B，所以 A 的優先度就比較高，所以如果選到同一個元素，那就會採用 selelctorA 的 CSS。即使 selectorB 低權重的 selector 比較多，也沒有意義。實際的例子如下
 ```
@@ -77,7 +77,7 @@ main form > .check button[attr="submit"] {
 ```
 最後還是採用 `color: red`
 
-那如果高權重的 selector 數量相同，像下面這種情況，就需要比較到低權重的 selector 數量，上面的形況的話 selectorC 會大於 selectorB
+那如果高權重的 selector 數量相同，像下面這種情況，就需要比較到低權重的 selector 數量，下面的情況的話 selectorC 會大於 selectorB
 
 ```
 selectorB => [2, 4, 6]
@@ -143,7 +143,7 @@ div {
 
 那才會比較後面的 selector。
 
-所以我們可以看看最終版
+所以我們可以看看最終版的權重計算
 ```
 [
 !important,
