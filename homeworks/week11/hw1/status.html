@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header class="warning">
+        Warning: 此為測試用留言板，請勿使用您常用與真實的帳號密碼，以免資料外洩！！！
+    </header>
+    <main class="board" >
+        <a href="users.php"><div class="btn">身份設定</div></a>
+        <div id="render_target"></div>
+        <div class="status" id="template" data-template="editable">
+            <form action="">
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="text" name="name" value="{{name}}">
+                <div>
+                    新增留言<input type="checkbox" name="add" data-default="{{add}}">
+                    編輯留言<select name="edit" data-default="{{edit}}">
+                        <option value="no">不可</option>
+                        <option value="self">自己</option>
+                        <option value="all">全部</option>
+                    </select>
+                    刪除留言<select name="delete" data-default="{{delete}}">
+                        <option value="no">不可</option>
+                        <option value="self">自己</option>
+                        <option value="all">全部</option>
+                    </select>
+                    設定權限<select name="status" data-default="{{status}}">
+                        <option value="1">不可</option>
+                        <option value="2">管理員以下</option>
+                        <option value="3">全部</option>
+                    </select>
+                </div>
+                <input type="submit" data-method="update" value="修改" >
+                <input type="button" data-method="delete" value="刪除" >
+            </form>
+        </div>
+        <div class="status" id="status-0">
+            <p class="id">新增權限</p>
+            <form>
+                <input type="text" name="name">
+                新增留言<input type="checkbox" name="add">
+                編輯留言<select name="edit">
+                    <option value="no">不可</option>
+                    <option value="self">自己</option>
+                    <option value="all">全部</option>
+                </select>
+                刪除留言<select name="delete">
+                    <option value="no">不可</option>
+                    <option value="self">自己</option>
+                    <option value="all">全部</option>
+                </select>
+                設定權限<select name="status">
+                    <option value="1">不可</option>
+                    <option value="2">管理員以下</option>
+                    <option value="3">全部</option>
+                </select>
+                <input type="submit" data-method="add" value="新增" >
+            </form>
+        </div>
+    </main>
+
+    <script src="status.js"></script>
+</body>
+
+</html>
