@@ -1,5 +1,6 @@
 let a = document.querySelector('.status > form');
 const TEMPLATE = document.querySelector('#template').innerHTML;
+const baseUrl = 'http://lauviah.io/projects/comment-board/';
 (function addListener () {
     renderStatus();
 
@@ -14,7 +15,7 @@ function renderStatus() {
     target.innerHTML = '';
 
     const req = new XMLHttpRequest();
-    req.open('GET', "http://mentor-program.co/mtr04group1/Lauviah/week11/hw1/status_api.php", true);
+    req.open('GET', baseUrl + "status_api.php", true);
     req.onload = (e) => {
         data = JSON.parse(req.response).content;
         data.forEach(statusData => {
@@ -85,7 +86,7 @@ function editStatus (e) {
     }).join('&');
     console.log(reqBody)
     const req = new XMLHttpRequest();
-    req.open("PATCH", "http://mentor-program.co/mtr04group1/Lauviah/week11/hw1/status_api.php", true);
+    req.open("PATCH", baseUrl + "status_api.php", true);
     req.onload = (e) => {
         
         // 有點忘記怎麼判斷 http status 了，先放著，之後再去看第六周作業補上
@@ -101,7 +102,7 @@ function deleteStatus (e) {
     const id = this.parentElement.elements['id'].value;
     console.log(id);
     const req = new XMLHttpRequest();
-    url = 'http://mentor-program.co/mtr04group1/Lauviah/week11/hw1/status_api.php?id=' + id;
+    url = baseUrl + 'status_api.php?id=' + id;
     req.open("DELETE", url);
     req.onload = (e) => {
         
@@ -124,7 +125,7 @@ function addStatus (e) {
     }).join('&');
     console.log(reqBody);
     const req = new XMLHttpRequest();
-    req.open("POST", "http://mentor-program.co/mtr04group1/Lauviah/week11/hw1/status_api.php", true);
+    req.open("POST", baseUrl + "status_api.php", true);
     req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     req.onload = (e) => {
         

@@ -80,7 +80,7 @@ while($row_status = $result_status_can_set->result->fetch_assoc()) {
                         ?>
                     </div>
                     <div>
-                        <span class='user__nickname'><?php echo $row["nickname"]?></span>
+                        <span class='user__nickname'><?php echo trans_HTML_valid($row["nickname"])?></span>
                         <span class='user__username'>@ <?php echo $row["username"]?></span>
                     </div>
                 </div>
