@@ -2,6 +2,7 @@
 
 const listItemTEMPLATE = document.querySelector('.list-item').innerHTML;
 const todoList = {};
+const baseUrl = 'http://lauviah.io/projects/todo/';
 todoList.tasks = [];
 todoList.filterState = 'all';
 
@@ -256,14 +257,14 @@ todoList.save = () => {
   })));
 
   $.ajax({
-    url: 'http://mentor-program.co/mtr04group1/Lauviah/week12/hw2/todo.php',
+    url: baseUrl + 'todo.php',
     data: {
       json: data
     },
     dataType: "json",
     method: "POST",
     success: (data) => {
-      let url = 'http://mentor-program.co/mtr04group1/Lauviah/week12/hw2/?id=' + data.insert_id;
+      let url = baseUrl + '?id=' + data.insert_id;
       copy (url);
       popup('Saving Success!! Link have been copy to yuor clipboard');
       setTimeout(() => popup(false), 500);
@@ -313,7 +314,7 @@ function addTaskButtonHandeler() {
   if (id) {
     // console.log(213123);
     $.ajax({
-      url: 'http://mentor-program.co/mtr04group1/Lauviah/week12/hw2/todo.php?id=' + id,
+      url: baseUrl + 'todo.php?id=' + id,
       metohd: 'GET',
       success: (data) => {
         console.log(data);
