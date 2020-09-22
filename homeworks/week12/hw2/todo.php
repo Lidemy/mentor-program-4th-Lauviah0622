@@ -41,7 +41,7 @@ if ($method === "GET") {
     }
 
     $id = $_GET['id'];
-    $sql_get_data = "SELECT * FROM mtr04group1.Lauviah_todo WHERE id = ?";
+    $sql_get_data = "SELECT * FROM lauviah.Lauviah_todo WHERE id = ?";
 
     $stmt = $conn->prepare($sql_get_data);
     $stmt->bind_param("i", $id);
