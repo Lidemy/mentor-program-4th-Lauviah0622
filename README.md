@@ -244,7 +244,7 @@ Mindset 建立：
 - [ ] P1 你知道什麼是 API
 - [ ] P1 你會使用 node.js 寫出串接 API 的程式
 - [ ] P1 你知道 HTTP method 有哪些
-- [ ] P1 你知道基本的 HTTP statud code，像是 200、301、400、404、500
+- [ ] P1 你知道基本的 HTTP status code，像是 200、301、400、404、500
 
 ### 第五週（07/13 ~ 07/19）：複習週
 
@@ -565,6 +565,8 @@ HTML 的部分會簡單介紹幾個常見的 tag，以及 head 的一些屬性�
 1. [部署 AWS EC2 遠端主機 + Ubuntu LAMP 環境 + phpmyadmin](https://github.com/Lidemy/mentor-program-2nd-yuchun33/issues/15)
 2. [一小時完成 VPS (Virtual Private Server) 部署](https://github.com/Lidemy/mentor-program-2nd-futianshen/issues/21)
 3. [如何遠端連接虛擬主機上的 mySQL 資料庫 ？](https://github.com/Lidemy/mentor-program-2nd-futianshen/issues/33)
+4. [[紀錄] 部屬 AWS EC2 雲端主機 + LAMP Server + phpMyAdmin](https://mtr04-note.coderbridge.io/2020/09/15/-%E7%B4%80%E9%8C%84-%08-%E9%83%A8%E5%B1%AC-aws-ec2-%E9%9B%B2%E7%AB%AF%E4%B8%BB%E6%A9%9F-/)
+5. [AWS EC2 佈署網站：卡關記錄](https://nicolakacha.coderbridge.io/2020/09/16/launch-website/)
 
 接著有關於專有名詞的部分，只要稍微聽過有個印象就好了，暫時不需要深入研究，可以看[程式導師實驗計畫：Lesson 8-2 之資料庫](https://www.youtube.com/watch?v=iDG8Ha2uZPs)來學習什麼是 NoSQL、transaction、ACID 與 Lock。
 
@@ -625,7 +627,22 @@ HTML 的部分會簡單介紹幾個常見的 tag，以及 head 的一些屬性�
 1. [JS201] 進階 JavaScript：那些你一直搞不懂的地方
 2. [What the heck is the event loop anyway? | Philip Roberts | JSConf EU](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
+可以搭配其他我寫的文章一起閱讀：
+
+1. [該來理解 JavaScript 的原型鍊了](https://blog.huli.tw/2017/08/27/the-javascripts-prototype-chain/)
+2. [深入探討 JavaScript 中的參數傳遞：call by value 還是 reference？](https://blog.huli.tw/2018/06/23/javascript-call-by-value-or-reference/)
+3. [我知道你懂 hoisting，可是你了解到多深？](https://blog.huli.tw/2018/11/10/javascript-hoisting-and-tdz/)
+4. [所有的函式都是閉包：談 JS 中的作用域與 Closure](https://blog.huli.tw/2018/12/08/javascript-closure/)
+5. [淺談 JavaScript 頭號難題 this：絕對不完整，但保證好懂](https://blog.huli.tw/2019/02/23/javascript-what-is-this/)
+6. [JavaScript 中的同步與非同步（上）：先成為 callback 大師吧！](https://blog.huli.tw/2019/10/04/javascript-async-sync-and-callback/)
+7. [覺得 JavaScript function 很有趣的我是不是很奇怪](https://blog.huli.tw/2020/04/18/javascript-function-is-awesome/)
+
 如果你不排斥比較長的影片，也可以看這個：[程式導師實驗計畫第二期：Week9-2 JavaScript 執行原理](https://youtu.be/3s69FPDZGRk) （內容有很多應該都該 JS201 類似，所以有時間再看就好，沒看也沒關係）
+
+物件導向的地方我自己沒有很熟，所以還在探索怎麼教會比較好，這邊有兩個第二期的影片，會用 PHP 跟 JavaScript 當範例。會用 PHP 是因為 JS 中的物件導向並不完整，而 PHP 的完整許多，但要注意影片中會在 PHP 跟 JS 中切換，建議大家只需要了解一些基本概念即可，不需要執著於一定要完全搞懂物件導向：
+
+1. [程式導師實驗計畫第二期：Week5-2：物件導向程式設計](https://www.youtube.com/watch?v=nZhzLcV9eHI&ab_channel=Lidemy%E9%8B%B0%E5%AD%B8%E9%99%A2)
+2. [Week5 物件導向（續）：繼承與 static](https://www.youtube.com/watch?v=k5TGAw7faNg&ab_channel=Lidemy%E9%8B%B0%E5%AD%B8%E9%99%A2)
 
 [HW16 作業連結](/homeworks/week16)
 
@@ -639,12 +656,13 @@ HTML 的部分會簡單介紹幾個常見的 tag，以及 head 的一些屬性�
 - [ ] P1 你能夠舉出一個運用 Closure 的例子
 - [ ] P1 你知道 Prototype 在 JavaScript 裡是什麼
 - [ ] P1 你知道大部分情況下 this 的值是什麼
+- [ ] P2 你知道物件導向的基本概念（類別、實體、繼承、封裝）
 
 ### 第十七週（10/05 ~ 10/11）：現代後端開發（上）
 
 [Express](https://expressjs.com/) 是可以在 Node.js 環境下執行的輕量後端框架，自由度極高，也能夠快速開發出後端應用程式。
 
-跟其他有完整 MVC 架構的框架相比，Express 其實鬆散（或者說自由）很多，許多地方並沒有強制規範，都只是按照前人的方法或者是慣例來實踐，十個人可能會有十種不的寫法。
+跟其他有完整 MVC 架構的框架相比，Express 其實鬆散（或者說自由）很多，許多地方並沒有強制規範，都只是按照前人的方法或者是慣例來實踐，十個人可能會有十種不同的寫法。
 
 有了之前 PHP 以及 JS 的基礎，我相信學習 Express 會快速許多，因此在這一週裡面可以試試看能不能快速上手 Express 並完成作業。
 
@@ -652,11 +670,11 @@ HTML 的部分會簡單介紹幾個常見的 tag，以及 head 的一些屬性�
 
 而且你幾乎不需要寫任何 SQL Query，因為 ORM 都會幫你處理的好好的，你只要學習怎麼用就可以了。這一週會使用 Sequelize 這個套件來做 ORM 以及串接資料庫，讓你體驗看看不用寫 SQL Query 的爽快感。
 
-最後會把這週的專案部署到免費的空間 [Heroku](https://www.heroku.com/)
+最後會把這週的專案部署到免費的空間 [Heroku](https://www.heroku.com/)或是自己的主機（nginx + PM2）。
 
 #### 指定教材：
 
-1. [BE201] Express 與 Sequelize：看到「ORM 與 Sequelize」結束
+1. [BE201] Express 與 Sequelize：全部
 
 [HW17 作業連結](/homeworks/week17)
 
@@ -671,17 +689,15 @@ HTML 的部分會簡單介紹幾個常見的 tag，以及 head 的一些屬性�
 
 ### 第十八週（10/12 ~ 10/18）：現代後端開發（下）
 
-上一週我們已經把基礎的 Express + Sequelize 都搞定了，這一週就是延續上一週的基礎，開始幫餐廳網站加上訂單相關的功能。
+上週已經熟悉的基本的 Express + Sequelize 開發，而這一週我們會把之前做的餐廳網站移植過來 Express，並且加入後台的功能，讓我們可以有一個相對完整的專案。
 
-這週一樣會提供一步步帶著做的教學，讓大家跟著我一起把餐廳網站最後一塊拼圖拼起來。不過如果你想挑戰自己，可以先試著不要看教學，試著自己做出來看看。
+這週會做的東西主要有：
 
-這一週要完成的功能如下：
+1. 移植餐廳網站
+2. 新增餐廳後台，管理菜單
+3. 新增餐廳後台，管理常見問題
 
-1. 身為一個使用者，我想要輸入訂單編號並且查詢訂單狀態
-2. 身為一個管理員，我想要在後台看到所有訂單
-3. 身為一個管理員，我想要在後台能夠改變訂單的狀態
-
-上周教了怎麼把專案部署到 Heroku，而這週會使用 Nginx + PM2 來部署我們寫好的 Web Application。
+這週大致上需要用到的東西在上一週都學到了，核心概念跟上一週沒有什麼差，如果你有時間壓力的話，可以跳過這一週的作業。
 
 #### 指定教材
 
