@@ -55,7 +55,20 @@ let 跟 const 在被賦值前不能被存取 (TDZ)
 - [ ] P1 你能夠舉出一個運用 Closure 的例子
 
 debounce, throttle, memeory
-其實上面都是 function 的 decorator，運用 closure 可以幫 function 加上功能而不影響原有的 function。React 裡面有一種 higher order Component 也是這個概念。
+其實上面都是 function 的 decorator，運用 closure 可以幫 function 加上功能而不影響原有的 function。React 裡面有一種 higher order Component 也是這個概念。用起來的基本架構好像是這樣？
+
+```js
+
+function decorator (fn) {
+    // 要藏起來的參數或者 method
+    return function (args)  {
+        // 邏輯判斷丟這邊
+
+        // 最後一要求執行 fn 或者是給對應的值，總之要跟原本的 fn 執行起來一模一樣
+        return fn(args)
+    }
+}
+```
 
 - [ ] P1 你知道 Prototype 在 JavaScript 裡是什麼
 
