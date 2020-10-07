@@ -145,4 +145,143 @@ console.log(a === b); // node: false   chrome: true
 
 不過比其他語言，我們只是會需要一點奇技淫巧來做到相同的功能而已，反正這不是前端的宿命嗎(?)。
 
+## 其他問題
+
+對於 for loop 中 var 的 scope 自己可以理解，但是如果是用 let 就難理解很多了。
+
+```js
+function test1() {
+    let arr = [];
+    for (var i = 0; i < 10; i++) {
+        arr[i] = () => {
+            console.log(i)
+        }
+    }
+}
+```
+這個是 var 的情形，那 EC 還有 VO 的圖會像這樣
+```
+test1 {
+    var i = 0
+    arr[0] = console.log(i);
+    i = 1
+    arr[1] = console.log(i);
+    i = 2
+    arr[2] = console.log(i);
+    i = 3
+    arr[3] = console.log(i);
+    i = 4
+    arr[4] = console.log(i);
+    i = 5
+    arr[5] = console.log(i);
+    ...
+}
+```
+所以才會有 log 出來全部都是 `5` 的狀況。
+
+但這裡有個問題，因為在 test1 也不能存取 i，所以會比較像這樣？
+
+```
+test1 {
+    forloop {
+        var i = 0
+        arr[0] = console.log(i);
+        i = 1
+        arr[1] = console.log(i);
+        i = 2
+        arr[2] = console.log(i);
+        i = 3
+        arr[3] = console.log(i);
+        ...
+    }
+}
+```
+
+如果是 let：
+
+```js
+function test2() {
+    for (let i = 0; i < 10; i++) {
+        // console.log(i);
+        arr[i] = () => {
+            console.log(i)
+        }
+    }
+}
+test2()
+```
+自己的理解會像這樣。
+```
+test2{
+    for loop{
+        var i = 0
+        {
+            let i = loop.i = 0
+            arr[i] = console.log(i);
+        }
+        i = 1
+        {
+            let i = loop.i = 1
+            arr[i] = console.log(i);
+        }
+        i = 2
+        {
+            let i = loop.i = 2
+            arr[i] = console.log(i);
+        }
+        i = 3
+        {
+            let i = loop.i = 3
+            arr[i] = console.log(i);
+        }
+        ...
+    }
+}
+```
+這裡是一個不太確定的部分，因為 let 是 block scope。所以只要 loop 執行一次，就會建立一個 scope，並把值複製進來？
+
+不過這樣也不太合理就對了...怎麼可能因為 var 跟 let 就改變 for loop 的運作方式。
+
+所以想說 var loop 應該會是這樣？
+```
+test1 {
+    forloop {
+        iterator = 0
+        var i = iterator 
+        {
+            arr[0] = console.log(i);
+        }
+        iterator = 1
+        i = iterator = 1
+        {
+           arr[1] = console.log(i);
+        }
+        iterator = 2
+        i = iterator = 2
+        {
+            arr[2] = console.log(i);
+        }
+        iterator = 3
+        i = iterator = 3
+        {
+            arr[3] = console.log(i);
+        }
+        ...
+    }
+}
+```
+
+上面囉嗦一堆其實結論應該是這樣？
+不過我猜這些應該 standard 都找的到... 可是還沒有時間找，如果找的到的話我再找時間自己去翻好了
+
+1. for loop 本身也是一個 function scope  
+    => 因為外層存取不到 for 裡面的變數
+1. block scope 原本就存在，但是 var 這個宣告方式會忽略 block scope，直接宣告在 function scope 裡面，但是 let 就會宣告在 block scope 裡面  
+=> 這裡比較像猜測，因為先有 var，但是因為 let 跟 const 而後來建立一個 block scope 有點奇怪。
+
+3. for loop 本身有一個 iterator，然後會把值複製進去？  
+=> 這裡我也覺得很不合理，可是如果不是這樣的話 var 跟 let 在 for loop 的運作方式會不一樣。
+
+
+
 

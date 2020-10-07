@@ -211,6 +211,7 @@ console.log(i) EC {            // 32, 34, 36, 38, 40
 
 ```
 
-❓ 有個部分不太確定，從 callback queue 來的 是在 global 執行完之後再執行，還是 global EC 會執行完之後再執行 Callback queue 
+❓ 有個部分不太確定，從 callback queue 來的 是在 global 執行完之後再執行，還是 global EC 會執行完之後再執行 Callback queue
 
+> 找到答案了，再 global EC 完全執行完之後再執行 callback queue 裡面的地方，而且 global VO 裡面宣告的變數（全域變數），其實也會以閉包的方式被 callback 保留下來，之前也想過一樣的[問題](https://github.com/Lidemy/mentor-program-3rd-ClayGao/pull/24#issuecomment-520367185)
 
