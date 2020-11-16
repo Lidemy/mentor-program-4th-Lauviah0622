@@ -29,20 +29,8 @@ const Button = styled(ButtonComponent)`
     transform: scale(1.2, 1.2) translateX(-1px);
   }
 `;
-
-// function ButtonComponent({ children, className, onClick, onKeyDown}) {
-//   return (
-//     <div
-//       // {...props}
-//       className={className}
-//       onClick={e => onClick == null || onClick(e)}
-//       onKeyDown={e => onKeyDown(e)}
-//     >
-//       <div>{children}</div>
-//     </div>
-//   );
-// }
 function ButtonComponent(props) {
+  console.log('rerender', props.value)
   return (
     <div
       {...props}
@@ -50,7 +38,7 @@ function ButtonComponent(props) {
       // onClick={e => onClick == null || onClick(e)}
       // onKeyDown={e => onKeyDown(e)}
     >
-      <div>{props.children == null ||props.children }</div>
+      <div>{props.value == null ||props.value }</div>
     </div>
   );
 }
