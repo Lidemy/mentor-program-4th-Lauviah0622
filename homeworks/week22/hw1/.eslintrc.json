@@ -1,0 +1,6 @@
+{
+    "extends": ["react-app"], //繼承原本就下載好的 rule
+    "rules": {
+      "react/prop-types": "warn"
+    }
+}
