@@ -219,5 +219,7 @@ controlled component 很萬能，大部分的情況都可以用他
 
 ## React Router 背後的原理大概是怎麼實作的？(隱藏題 XD)
 
+自己猜，應該是有一個 state 儲存 window.location，然後用 context 傳下去（應該是就是 `<Router>`？）
+然後會依照 context 的 value 來做 `value === path && component` 這樣吧？
 
 
