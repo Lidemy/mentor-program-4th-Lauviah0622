@@ -45,6 +45,9 @@ export default function Blog() {
       }
       setUserData(response);
       return setLoading(false);
+    }, err => {
+      console.log(err.message);
+      setLoading(false)
     });
   }, []);
   
