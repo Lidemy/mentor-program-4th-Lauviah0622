@@ -201,7 +201,7 @@ componentDidMount 和 componentDidUpdate 有點像是本身就設定好，會在
 ## uncontrolled 跟 controlled component 差在哪邊？要用的時候通常都是如何使用？
 
 
-![https://imgur.com/j3KUxx7]()
+![](https://imgur.com/j3KUxx7.jpg)
 
 
 上面是 controller component，下面是 uncontrolled。
