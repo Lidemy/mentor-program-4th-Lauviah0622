@@ -44,7 +44,7 @@ export default function Post() {
         #{post && post.id} {post && post.title}
       </h1>
       <h3>{post && new Date(post.createdAt).toLocaleString()}</h3>
-      <button onClick={handleDeleteButton}>delete</button>
+      {userState && <button onClick={handleDeleteButton}>delete</button>}
       {editable && <button onClick={handleUpdateButton}>update</button>}
       <p>{post && post.body}</p>
     </PostContainer>
