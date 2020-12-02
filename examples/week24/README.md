@@ -124,6 +124,12 @@ function getPosts() {
 其實很推薦大家可以看看 redux-thunk 的[原始碼](https://github.com/reduxjs/redux-thunk/blob/master/src/index.js)，只有 14 行而已：
 
 ``` js
+const store = createStore(reducer, applyMiddleware(middleWare))
+const functionAction = () => (dispatch) => {
+
+}
+
+
 function createThunkMiddleware(extraArgument) {
   return ({ dispatch, getState }) => (next) => (action) => {
     if (typeof action === 'function') {
